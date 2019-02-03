@@ -1,5 +1,4 @@
 from Usuario import Usuario
-from Usuario import Usuario
 class Funcionario(Usuario):
     def __init__(self,cedula,nombre, contrasena,sueldo,comision,correo="No"):
         super().__init__(cedula,nombre,contrasena,correo)
