@@ -1,7 +1,8 @@
 from Usuario import Usuario
+from Usuario import Usuario
 class Funcionario(Usuario):
     def __init__(self,cedula,nombre,apellido, contrasena,sueldo,comision,correo="No"):
-        super().__init__(self,cedula,nombre,apellido,contrasena,correo)
+        super().__init__(cedula,nombre,apellido,contrasena,correo)
         self._sueldo=sueldo
         self._comision=comision
         self._clientes=[]
