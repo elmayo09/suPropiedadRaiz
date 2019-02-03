@@ -19,6 +19,10 @@ class Funcionario(Usuario):
     def addCliente(self,cliente):
         self._clientes.append(cliente)
 
+    def toString(self):
+        printer = "Funcionario: {"+"cedula: "+str(self._cedula)+", nombre: "+str(self._nombre)+", correo: "+str(self._correo)+", sueldo: "+str(self._sueldo)+", comision: "+str(self._comision)+" }"
+        return printer
+        
     @staticmethod    
     def funcionarioMayorSueldo(funcionarios):
         mayor=funcionarios[0].getSueldo()
