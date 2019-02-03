@@ -60,3 +60,4 @@ class Compraventa:
         for compraventa in compraventas:
             if compraventa.getPropietario==propietario:
                 lista.append(compraventa)
+        return lista

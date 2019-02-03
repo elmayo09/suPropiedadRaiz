@@ -1,10 +1,11 @@
 class Arriendo:
-    def __init__(self, fechainicio, fechafin, costomensual,inmueble):
+    def __init__(self, propietario, fechainicio, fechafin, costomensual,inmueble, arrendatario=None):
         self._fechainicio = fechainicio
         self._costomensual = costomensual
         self._fechafin = fechafin
         self._inmueble=inmueble
-        self._cliente=None
+        self._propietario=propietario
+        self._arrendatario=arrendatario
 
     def getFechainicio(self):
         return self._fechainicio
@@ -34,4 +35,20 @@ class Arriendo:
         return self._inmueble
         
 
-    
+    @staticmethod
+    def arriendoMasBajo(arriendos):
+        menor=arriendos[0]
+        for arriendo in arriendos:
+            if arriendo.getCostomensual<menor.getCostomensual:
+                menor=arriendo
+        return arriendo
+
+    @staticmethod
+    def arriendoMasAlto(arriendos):
+        mayor=arriendos[0]
+        for arriendo in arriendos:
+            if arriendo.getCostomensual>mayor.getCostomensual:
+                mayor=arriendo
+        return arriendo
+
+        
