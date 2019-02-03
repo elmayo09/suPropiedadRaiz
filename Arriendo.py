@@ -1,5 +1,6 @@
 class Arriendo:
-    def __init__(self, propietario, fechainicio, fechafin, costomensual,inmueble, arrendatario=None):
+    def __init__(self, codigo, fechainicio, costomensual, fechafin, inmueble, propietario, arrendatario=None):
+        self._codigo = codigo
         self._fechainicio = fechainicio
         self._costomensual = costomensual
         self._fechafin = fechafin
@@ -34,7 +35,10 @@ class Arriendo:
     def getInmbueble(self):
         return self._inmueble
         
-
+    def toString(self):
+        printer = "{"+"codigo: "+str(self._codigo)+", fecha inicio: "+str(self._fechainicio)+", costo mensual: "+str(self._costomensual)+", fechafin: "+str(self._fechafin)+", inmueble: "+str(self._inmueble)+", propietario: "+str(self._propietario)+", arrendatario: "+str(self._arrendatario)+" }"
+        return printer
+        
     @staticmethod
     def arriendoMasBajo(arriendos):
         menor=arriendos[0]
