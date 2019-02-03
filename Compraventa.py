@@ -1,11 +1,18 @@
 class Compraventa:
-    def __init__(self, propietario, fecha, valor, fechafin,inmueble,comprador=None):
+    def __init__(self,codigo, propietario, fecha, valor, fechafin,inmueble,comprador=None):
+        self._codigo=codigo
         self._fecha = fecha #fecha de pubicacion de la venta
         self._valor = valor
         self._fechafin = fechafin 
         self._inmueble=inmueble
         self._propietario=propietario
         self._comprador=comprador
+
+    def getCodigo(self):
+        return self._codigo
+
+    def setCodigo(self, codigo):
+        self._codigo = codigo
 
     def getFecha(self):
         return self._fecha
