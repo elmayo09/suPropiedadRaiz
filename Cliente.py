@@ -8,7 +8,7 @@ class Cliente(Usuario):
         self._funcionario=None
 
     def toString(self):
-        printer = "Usuario: {"+self._nombre+", "+self._direccion+", "+self._correo+" }"+self._funcionario.getNombre()
+        printer = "Usuario: {"+self._nombre+", "+self._direccion+", "+self._correo+" }"
         return printer
         
     def getDireccion(self):
