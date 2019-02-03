@@ -8,7 +8,7 @@ class Cliente(Usuario):
         self._funcionario=None
 
     def toString(self):
-        printer = "Usuario: {"+self._nombre+", "+self._apellido+", "+self._direccion+", "+self._correo+" }"
+        printer = "Usuario: {"+self._nombre+", "+self._direccion+", "+self._correo+" }"+self._funcionario.getNombre()
         return printer
         
     def getDireccion(self):
@@ -27,6 +27,10 @@ class Cliente(Usuario):
         self._funcionario=funcionario
     def getFuncionario(self):
         return self._funcionario
+    @staticmethod
+    def mostrarClientes(lista):
+        for u in lista:
+            print(u.toString())
 
 
 
