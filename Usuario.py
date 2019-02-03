@@ -18,4 +18,10 @@ class Usuario:
     def setCorreo(self, correo):
         self._correo=correo
     
+    def toString(self):
+        printer = "{"+"cedula: "+str(self._cedula)+", nombre: "+str(self._nombre)+", apellido: "+str(self._apellido)+", correo: "+str(self._correo)+", contraseña: "+str(self._contrasena)+" }"
+        return printer
+    
+    
+    
 
