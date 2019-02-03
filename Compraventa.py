@@ -1,7 +1,6 @@
 class Compraventa:
-    def __init__(self, propietario, fecha, costo, valor, fechafin,inmueble,comprador=None):
+    def __init__(self, propietario, fecha, valor, fechafin,inmueble,comprador=None):
         self._fecha = fecha #fecha de pubicacion de la venta
-        self._costo = costo
         self._valor = valor
         self._fechafin = fechafin 
         self._inmueble=inmueble
@@ -13,12 +12,6 @@ class Compraventa:
 
     def setFecha(self, fe):
         self._fecha = fe
-
-    def getCosto(self):
-        return self._costo
-
-    def setCosto(self, co):
-        self._costo = co
 
     def getValor(self):
         return self._valor
