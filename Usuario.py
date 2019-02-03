@@ -1,8 +1,7 @@
 class Usuario:
-    def __init__(self,cedula,nombre,apellido,contrasena,correo="No"):
+    def __init__(self,cedula,nombre,contrasena,correo="No"):
         self._cedula=cedula
         self._nombre=nombre
-        self._apellido=apellido
         self._correo=correo
         self._contrasena=contrasena
     def getNombre(self):
@@ -17,11 +16,5 @@ class Usuario:
         return self._correo
     def setCorreo(self, correo):
         self._correo=correo
-    
-    def toString(self):
-        printer = "{"+"cedula: "+str(self._cedula)+", nombre: "+str(self._nombre)+", apellido: "+str(self._apellido)+", correo: "+str(self._correo)+", contraseña: "+str(self._contrasena)+" }"
-        return printer
-    
-    
     
 

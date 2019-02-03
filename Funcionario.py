@@ -2,7 +2,7 @@ from Usuario import Usuario
 from Usuario import Usuario
 class Funcionario(Usuario):
     def __init__(self,cedula,nombre,apellido, contrasena,sueldo,comision,correo="No"):
-        super().__init__(cedula,nombre,apellido,contrasena,correo)
+        super().__init__(cedula,nombre,contrasena,correo)
         self._sueldo=sueldo
         self._comision=comision
         self._clientes=[]
@@ -20,10 +20,6 @@ class Funcionario(Usuario):
     def addCliente(self,cliente):
         self._clientes.append(cliente)
 
-    def toString(self):
-        printer = "{"+"cedula: "+str(self._cedula)+", nombre: "+str(self._nombre)+", apellido: "+str(self._apellido)+", correo: "+str(self._correo)+", contraseña: "+str(self._contrasena)+", sueldo: "+str(self._sueldo)+", comision: "+str(self._comision)+" }"
-        return printer
-        
     @staticmethod    
     def funcionarioMayorSueldo(funcionarios):
         mayor=funcionarios[0].getSueldo()

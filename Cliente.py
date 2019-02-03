@@ -1,7 +1,7 @@
 from Usuario import Usuario
 class Cliente(Usuario):
-    def __init__(self,cedula,nombre,apellido, contrasena,direccion,correo="No"):
-        super().__init__(cedula,nombre,apellido,contrasena,correo)
+    def __init__(self,cedula,nombre, contrasena,direccion,correo="No"):
+        super().__init__(cedula,nombre,contrasena,correo)
         self._direccion=direccion
         self._arriendos=[]
         self._compraventas=[]
@@ -27,6 +27,8 @@ class Cliente(Usuario):
         self._funcionario=funcionario
     def getFuncionario(self):
         return self._funcionario
+
+
 
 
 
