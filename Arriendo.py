@@ -41,7 +41,7 @@ class Arriendo:
         for arriendo in arriendos:
             if arriendo.getCostomensual<menor.getCostomensual:
                 menor=arriendo
-        return arriendo
+        return menor
 
     @staticmethod
     def arriendoMasAlto(arriendos):
@@ -49,6 +49,6 @@ class Arriendo:
         for arriendo in arriendos:
             if arriendo.getCostomensual>mayor.getCostomensual:
                 mayor=arriendo
-        return arriendo
+        return mayor
 
         
