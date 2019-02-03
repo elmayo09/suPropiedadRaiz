@@ -26,6 +26,11 @@ class Funcionario(Usuario):
             if mayor< funcionario.getSueldo():
                 mayor=funcionario
         return mayor
+    
+    @staticmethod
+    def mostrarFuncionarios(lista):
+        for u in lista:
+            print(u.toString())
 
 
 
