@@ -19,7 +19,7 @@ class Propietario(Usuario):
     def getInmuebles(self):
         return self._inmuebles
     def addInmueble(self, nuevoInmueble):
-        self._inmuebles.append(nuevoArriendo)
+        self._inmuebles.append(nuevoInmueble)
     def setFuncionario(self,funcionario):
         self._funcionario=funcionario
     def getFuncionario(self):
