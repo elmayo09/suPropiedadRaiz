@@ -22,13 +22,14 @@ class Funcionario(Usuario):
     def toString(self):
         printer = "Funcionario: {"+"cedula: "+str(self._cedula)+", nombre: "+str(self._nombre)+", correo: "+str(self._correo)+", sueldo: "+str(self._sueldo)+", comision: "+str(self._comision)+" }"
         return printer
-        
+           
     @staticmethod    
     def funcionarioMayorSueldo(funcionarios):
-        mayor=funcionarios[0].getSueldo()
+        mayor_sueldo = funcionarios[0].getSueldo()
+        mayor = funcionarios[0]
         for funcionario in funcionarios:
-            if mayor< funcionario.getSueldo():
-                mayor=funcionario
+            if mayor_sueldo < funcionario.getSueldo():
+                mayor = funcionario
         return mayor
     
     @staticmethod
