@@ -8,6 +8,10 @@ class Usuario:
         return self._nombre
     def setNombre(self, nombre):
         self._nombre=nombre
+    def getContrasena(self):
+        return self._contrasena
+    def setContrasena(self, contra):
+        self._contrasena=contra
     def getCedula(self):
         return self._cedula
     def setCedula(self, cedula):
@@ -16,5 +20,13 @@ class Usuario:
         return self._correo
     def setCorreo(self, correo):
         self._correo=correo
-    
+    @staticmethod
+    def login(nom, contra, lista):
+        for x in lista:
+            if x.getNombre()==nom:                
+                if x.getContrasena()==contra:
+                    return x
+                else:
+                    return None
+        return None
 
