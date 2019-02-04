@@ -4,7 +4,6 @@ class Propietario(Usuario):
         super().__init__(cedula,nombre,contrasena,correo)
         self._direccion=direccion
         self._inmuebles = []
-        self._funcionario=None
 
 
     def toString(self):
@@ -20,9 +19,5 @@ class Propietario(Usuario):
         return self._inmuebles
     def addInmueble(self, nuevoInmueble):
         self._inmuebles.append(nuevoInmueble)
-    def setFuncionario(self,funcionario):
-        self._funcionario=funcionario
-    def getFuncionario(self):
-        return self._funcionario
 
     
