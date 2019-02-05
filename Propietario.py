@@ -3,7 +3,7 @@ class Propietario(Usuario):
     def __init__(self,cedula,nombre, contrasena,direccion,correo="No"):
         super().__init__(cedula,nombre,contrasena,correo)
         self._direccion=direccion
-        self._inmuebles = []
+        self._contratosImuebles = []
 
 
     def toString(self):
@@ -15,9 +15,9 @@ class Propietario(Usuario):
         return self._direccion
     def setDireccion(self,direccion):
         self._direccion=direccion
-    def getInmuebles(self):
-        return self._inmuebles
-    def addInmueble(self, nuevoInmueble):
-        self._inmuebles.append(nuevoInmueble)
+    def getContratos(self):
+        return self._contratosImuebles
+    def addContrato(self, nuevoContrato):
+        self._contratosImuebles.append(nuevoContrato)
 
     
