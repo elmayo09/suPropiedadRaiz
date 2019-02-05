@@ -3,8 +3,8 @@ class Propietario(Usuario):
     def __init__(self,cedula,nombre, contrasena,direccion,correo="No"):
         super().__init__(cedula,nombre,contrasena,correo)
         self._direccion=direccion
-        self._contratosImuebles = []
-
+        self._compraventas=[]
+        self._arriendos=[]
 
     def toString(self):
         printer = "Propietario: {"+self._nombre+", "+self._direccion+", "+self._correo+", "+str(self._cedula)+" }"
@@ -15,9 +15,12 @@ class Propietario(Usuario):
         return self._direccion
     def setDireccion(self,direccion):
         self._direccion=direccion
-    def getContratos(self):
-        return self._contratosImuebles
-    def addContrato(self, nuevoContrato):
-        self._contratosImuebles.append(nuevoContrato)
-
+    def getListaConmpraventas(self):
+        return self._compraventas
+    def addCompraventa(self,contrato):
+        self._arriendos.append(contrato)
+    def getListaArriendos(self):
+        return self._arriendos
+    def addCArriendo(self,contrato):
+        self._arriendos.append(contrato)
     
