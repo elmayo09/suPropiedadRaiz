@@ -9,7 +9,7 @@ class Inmueble:
         self._area = area
         self._banos = banos
         self._cuartos = cuartos
-        self._tipo = tipo    #El tipo es para saber ACTUALMENTE si esta en compra-venta o en arriendo
+        self._tipo = tipo    #El tipo es para saber ACTUALMENTE si esta en compra-venta o en arriendo(A1=EnArriendo, A2=Arrendada, V1=enventa, V2=Vendida)
         self._arriendo=[]
         self._compraventa=None
         
