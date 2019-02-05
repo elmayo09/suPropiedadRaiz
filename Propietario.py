@@ -15,12 +15,12 @@ class Propietario(Usuario):
         return self._direccion
     def setDireccion(self,direccion):
         self._direccion=direccion
-    def getListaConmpraventas(self):
+    def getListaCompraventas(self):
         return self._compraventas
     def addCompraventa(self,contrato):
         self._arriendos.append(contrato)
     def getListaArriendos(self):
         return self._arriendos
-    def addCArriendo(self,contrato):
+    def addArriendo(self,contrato):
         self._arriendos.append(contrato)
     
