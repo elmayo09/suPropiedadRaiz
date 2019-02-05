@@ -57,6 +57,7 @@ class Compraventa:
         for compraventa in compraventas:
             if compraventa.getComprador==None:
                 lista.append(compraventa)
+        return lista
     
     @staticmethod
     def compraventaPorPropietario(compraventas, propietario):
