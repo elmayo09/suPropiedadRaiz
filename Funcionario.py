@@ -21,7 +21,7 @@ class Funcionario(Usuario):
         self._arriendos.append(contrato)
     def getListaArriendos(self):
         return self._arriendos
-    def addCArriendo(self,contrato):
+    def addArriendo(self,contrato):
         self._arriendos.append(contrato)
 
     def toString(self):
