@@ -21,9 +21,9 @@ class Usuario:
     def setCorreo(self, correo):
         self._correo=correo
     @staticmethod
-    def login(nom, contra, lista):
+    def login(ced, contra, lista):
         for x in lista:
-            if x.getNombre()==nom:                
+            if x.getNombre()==ced:                
                 if x.getContrasena()==contra:
                     return x
                 else:
