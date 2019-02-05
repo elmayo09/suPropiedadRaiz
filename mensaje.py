@@ -6,11 +6,12 @@ class Mensaje:
     err = { "1" : "Wrong option, try again", "2" : "Opción incorrecta, inténtelo de nuevo"}
 
 
-    menu_principal = { "1" : " 1. Add fake data.\n 2. Log In as functionary. \n 3. Sign In as Costumer. \n 4. Log In as Costumer. \n 0. Exit. \n ", "2" : "1. Agregar datos ficticios.\n2. Ingresar funcionario.\n3. Registrar cliente.\n4. Ingresar cliente.\n0. Salir.\n"}
+    menu_principal = { "1" : " -------------------------------------------\n1. Add fake data.\n 2. Log In as functionary. \n 3. Sign In as Costumer. \n 4. Log In as Costumer. \n 0. Exit. \n ", "2" : "-------------------------------------------\n1. Agregar datos ficticios.\n2. Ingresar funcionario.\n3. Registrar cliente.\n4. Ingresar cliente.\n0. Salir.\n"}
     ingreso_fun = { "1":"For Log In as an functionary, enter your identification number:\n","2":"Para ingresar como funcionario, ingrese su cédula:\n"}
     ingreso_contra = {"1": "Enter your password: ","2":"Ingresa tu contraseña: "}
     err_datos = {"1": "Wrong data, try again", "2":"Datos incorrectos, inténtelo de nuevo"}
     bienv_fun = {"1": "Welcome, ","2": "Bienvenido, "}
+    datosFicticios= {"2": "Datos ficticios Agregados"}
 
     menu_funcionario = { "1" : " 1. Register another functionary. \n 2. See best paying functionary. \n 3. See list of functionaries. \n 0. Return to main menu. \n ", "2" : " 1. Registrar otro funcionario. \n 2. Ver funcionario con mayor sueldo. \n 3. Ver listado de funcionarios. \n 4. Registrar nueva compraventa o arriendo. \n 0. Regresar al menú principal. \n " }
     registrar = {"1":"","2":""}
