@@ -23,7 +23,7 @@ class Usuario:
     @staticmethod
     def login(ced, contra, lista):
         for x in lista:
-            if x.getNombre()==ced:                
+            if x.getCedula()==ced:              
                 if x.getContrasena()==contra:
                     return x
                 else:
