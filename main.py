@@ -153,8 +153,24 @@ while(True):
                                 opcion3 = int(input())  #Opciones para el menu de solo arrendamiento
                                 if(opcion3 == 0):
                                     break
-                                elif(opcion3 ==1):
-                                    print("ingrese datos arrendamiento")
+                                elif(opcion3 ==1):  #arrendamiento para inmueble existente (direccion)
+                                    print("Ingrese los datos del arrendamiento")
+                                    print("Diga la cedula del ACTUAL propietario del inmueble: ")
+                                    cedula_propietario = int(input())
+                                    print("Diga el costo mensual del arrendamiento: ")
+                                    costo_mensual = int(input())
+                                    print("Diga la fecha de arrendamiento en formato: 'dd/mm/aaaa'")
+                                    fechainicio = str(input())
+                                    print("Diga la fecha de finalizacion de arrendamiento en formato: 'dd/mm/aaaa'")
+                                    fechafin = str(input())
+
+                                    codigos_unicos  += 1 #aumenta en 1 los codigos en general de la clase compraventa
+                                    codigo = codigos_unicos  #el codigo siempre sera diferente para cada compraventa
+                                    arrendamiento_nuevo = Arriendo(codigo, fechainicio, costo_mensual, fechafin, inmueble, cedula_propietario)
+
+                                    lista_arriendos.append(arrendamiento_nuevo) #la añade a la lista general
+                                    print("Arrendamiento publicado exitosamente")
+                                    print(arrendamiento_nuevo.toString())
                                     break
                                 else:
                                     print("no valida opcion")
@@ -204,28 +220,40 @@ while(True):
                             lista_compraventas.append(compraventa_nueva) #la añade a la lista general
                             Inmueble.listaInmuebles.append(inmueble_nuevo) #añade el inmueble a la lista inmuebles
                             print(compraventa_nueva.toString())
+                            
                         elif(opcion4==2):  #Pide los datos para registrar arriendo
                             tipo = "arrendamiento"
                             inmueble_nuevo = Inmueble(estrato, direccion, vigilancia, servicios, ascensor, area, cuartos, banos, tipo)
-                      
-                        else:
+                            print("Diga la cedula del ACTUAL propietario del inmueble: ")
+                            cedula_propietario = int(input())
+                            print("Diga el costo mensual del arrendamiento: ")
+                            costo_mensual = int(input())
+                            print("Diga la fecha de arrendamiento en formato: 'dd/mm/aaaa'")
+                            fechainicio = str(input())
+                            print("Diga la fecha de finalizacion de arrendamiento en formato: 'dd/mm/aaaa'")
+                            fechafin = str(input())
+
+                            codigos_unicos  += 1 #aumenta en 1 los codigos en general de la clase compraventa
+                            codigo = codigos_unicos  #el codigo siempre sera diferente para cada compraventa
+                            arrendamiento_nuevo = Arriendo(codigo, fechainicio, costo_mensual, fechafin, inmueble_nuevo, cedula_propietario)
+                            lista_arriendos.append(arrendamiento_nuevo) #la añade a la lista general
+
+                            
+                            print("Arrendamiento publicado exitosamente")
+                            print(arrendamiento_nuevo.toString())
+                            Inmueble.listaInmuebles.append(inmueble_nuevo) #añade el inmueble a la lista inmuebles
+                        else: #opcion no valida en el menu funcionario
                             print("no opcion valida")
                             break
 
   
                         
-                            
-                                   
-                            
-                    
-                elif(opcion2 == 5): #Registrar nuevo arriendo
-                    Funcionario.mostrarFuncionarios(lista_funcionarios)
 
-                elif(opcion2 == 6): #Aprobar compraventas
-                    Funcionario.mostrarFuncionarios(lista_funcionarios)
+                elif(opcion2 == 6): #opcion 6 menu funcionario Aprobar compraventas
+                    print("aprobar compraventas")
 
-                elif(opcion2 == 7): #Aprobar arriendos
-                    Funcionario.mostrarFuncionarios(lista_funcionarios)
+                elif(opcion2 == 7): #opcion 7 menu funcionario Aprobar arriendos
+                    print("aprobar arriendos")
 
 
                     
@@ -233,12 +261,78 @@ while(True):
         else:
             print(msg.err_datos[idioma]) #Datos erroneos funcionario
                 
-    elif(opcion1 == 3):
-        print(msg.err[idioma])
-        
-    elif(opcion1 == 4):
-        print(msg.err[idioma])
-        
-    elif(opcion1 == 5):
+    elif(opcion1 == 3): #opcion 3 menu principal registrtar cliente
+        print("Para registrarse como cliente, por favor digite los siguientes datos: ")
+        print("Ingrese su cedula: ")
+        cedula_cliente = int(input())
+        encontrado = False
+        for client in lista_clientes:
+            if (client.getCedula() == cedula_cliente): #encuentra un cliente con esa cedula
+                print("Ya existe un cliente con esa cedula")
+                encontrado = True
+                break
+        if(encontrado == False):  #No hay un cliente con esa cedula
+            print("Ingrese su nombre: ")
+            nombre_cliente = str(input())
+            print("Ingrese su contraseña: ")
+            contrasena_cliente = str(input())
+            print("Ingrese su direccion: ")
+            direccion_cliente = str(input())
+            
+
+            while(True):  #Correo opcional
+                print("Desea agregar correo para contacto? :\n1. Si\n2. No")
+                opcion_correo = int(input())
+
+                if(opcion_correo == 1):  #Pide correo y registra cliente con correo
+                    print("Ingrese su correo: ")
+                    correo_cliente = str(input())
+                    cliente_nuevo = Cliente(cedula_cliente, nombre_cliente, contrasena_cliente, direccion_cliente, correo_cliente)
+                    lista_clientes.append(cliente_nuevo)
+                    print("Cliente registrado correctamente: \n"+cliente_nuevo.toString())
+                    break
+
+                elif(opcion_correo == 2): #Registra cliente sin correo
+                    cliente_nuevo = Cliente(cedula_cliente, nombre_cliente, contrasena_cliente, direccion_cliente)
+                    lista_clientes.append(cliente_nuevo)
+                    print("Cliente registrado correctamente: \n"+cliente_nuevo.toString())
+                    break
+
+                else: #No ingresa 1 o 2
+                    print("No es una opcion valida")
+
+    elif(opcion1 == 4):  #opciop 4 del menu principal Ingreso Como Cliente
+        print("Para ingresar como cliente, por favor digite los siguientes datos: ")
+
+        print(msg.in_nombre[idioma])
+        nomb = str(input())
+        print(msg.in_contrasena[idioma])
+        contra = str(input())
+
+        logeado = Usuario.login(nomb, contra, lista_clientes)
+        if(logeado != None):
+            print(msg.bienv_fun[idioma]+logeado.getNombre()) #Ingreso exitoso como cliente
+
+            opciones_cliente = -1  #opcion2 = opciones del menu cliente
+            while(True):  # Ingreso al menu cliente
+                print("Seleccione una de las siguientes opciones: ")
+                print(" 1. Ver ofertas de arrendamiento. \n 2. Ver ofertas de compraventa. \n 0. Regresar al menú principal")
+                opciones_cliente = int(input())
+
+                if(opciones_cliente == 0): #Salir del menu cliente
+                    break
+
+                elif(opciones_cliente == 1):  #Mostrar arriendos disponibles
+                    print("Los arrendamientos disponibles son: ")
+                    Arriendo.mostrarArriendos(lista_arriendos)
+                
+                elif(opciones_cliente == 2):  #Mostrar compraventas disponibles
+                    print("Las compraventas disponibles son: ")
+                    Compraventa.mostrarCompraventas(lista_compraventas)
+            
+        else:
+            print(msg.err_datos[idioma]) #Datos erroneos cliente
+            
+    elif(opcion1 == 5): #Opcion 5 del menu principal
         print(msg.err[idioma])
         
