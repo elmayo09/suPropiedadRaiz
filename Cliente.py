@@ -8,9 +8,9 @@ class Cliente(Usuario):
         self._funcionario=None
 
     def toString(self):
-        printer = "Usuario: {"+self._nombre+", "+self._direccion+", "+self._correo+" }"
+        printer = "Cliente: { cedula: "+str(self._cedula)+" ,nombre: "+str(self._nombre)+" ,direccion: "+str(self._direccion)+", correo: "+str(self._correo)+" }"
         return printer
-        
+          
     def getDireccion(self):
         return self._direccion
     def setDireccion(self,direccion):
