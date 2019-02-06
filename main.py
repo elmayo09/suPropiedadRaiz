@@ -304,12 +304,12 @@ while(True):
     elif(opcion1 == 4):  #opciop 4 del menu principal Ingreso Como Cliente
         print("Para ingresar como cliente, por favor digite los siguientes datos: ")
 
-        print(msg.in_nombre[idioma])
-        nomb = str(input())
+        print(msg.in_cedula[idioma])
+        ced = int(input())
         print(msg.in_contrasena[idioma])
         contra = str(input())
 
-        logeado = Usuario.login(nomb, contra, lista_clientes)
+        logeado = Usuario.login(ced, contra, lista_clientes)
         if(logeado != None):
             print(msg.bienv_fun[idioma]+logeado.getNombre()) #Ingreso exitoso como cliente
 
