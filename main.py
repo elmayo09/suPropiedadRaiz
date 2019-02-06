@@ -3,18 +3,70 @@ from Cliente import Cliente
 from Compraventa import Compraventa
 from Funcionario import Funcionario
 from Inmueble import Inmueble
+from Propietario import Propietario
 from Usuario import Usuario
 from mensaje import Mensaje as msg
+from random import *
+
 codigos_unicos = 1000 #main
+
+lista_propietarios=[]
 lista_funcionarios = []
-primer_funcionario = Funcionario(999, "Karl", "111", 660000, 40000, "abc@sp.com")
-lista_funcionarios.append(primer_funcionario)
-
-primer_inmueble = Inmueble(3, "falsa", "si", "si", "si", 5, 2, 1, None)
-Inmueble.listaInmuebles.append(primer_inmueble)
-
 lista_clientes = []
 lista_compraventas = []
+lista_arriendos= []
+lista_compraventas=[]
+lista_inmuebles=[]
+valoresPassword = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ<=>@#%&+"
+nombres=["Andres Gimenez","Maria Taja","Lina Gutierrez","Juan Sarrias","Carlos inut","Pepe Grillo","Sara Macias","Eduardo Mejia","Yeremi Guarin","Martina Tamayo",
+    "Martin Correa","Cristina Mejia", "Emanuel Valencia", "Cristopher Amaya","Jose Mercado","Josue Galindo","Natalia Osorio","Edgar Aguirre","Emilio del monte","Miranda Rodas"]
+
+
+def agregarDatosFicticios():
+    primer_funcionario = Funcionario(1234, "admin", "1234", 660000, 40000, "abc@sp.com")
+    lista_funcionarios.append(primer_funcionario)
+    clientePrueba=Cliente(99,"prueba","1234", "car."+str(randint(60,150)))
+    lista_clientes.append(clientePrueba)
+    #Funcionarios----------------------------------------------------
+    cc=0;
+    while cc<10:
+        p=""
+        #Generador de contraseñas aleatorias
+        p = p.join([choice(valoresPassword) for i in range(5)])
+        #print(p)
+        f= Funcionario(cc,nombres[cc], p,randint(600000,1500000),randint(10000,1000000),nombres[cc].replace(" ", "") +"@gmail.com")
+        lista_funcionarios.append(f)
+        cc=cc+1
+
+    #Propietarios con inmuebles en arriendo   ----------------------
+    while cc< 15:
+        p=""
+        #Generador de contraseñas aleatorias
+        p = p.join([choice(valoresPassword) for i in range(5)])
+        c=Propietario(cc,nombres[cc],p, "car."+str(randint(60,150)))#Creacion de propietario
+        inmu=Inmueble(cc+1,"carr30","no","si","no",200,3,1,"enArriendo")#Creacion de inmueble
+        arrie=Arriendo(cc,"20-11-1990",randint(1000,150000),"21-12-1992",inmu,c,)#Creacion de contrato de arriendo enlazado a propietario e inmueble
+        inmu.addArriendo(arrie)#enlace inmueble con arriendo
+        c.addArriendo(arrie)#enlace propietario con arriendo
+        lista_inmuebles.append(inmu)
+        lista_arriendos.append(arrie)
+        lista_propietarios.append(c)
+        cc=cc+1
+
+    #Propietarios con inmuebles en venta---------------------------
+    while cc<20:
+        p=""
+        #Generador de contraseñas aleatorias
+        p = p.join([choice(valoresPassword) for i in range(5)])
+        c=Propietario(cc,nombres[cc],p, "car."+str(randint(60,150)))#Creacion de propietario
+        inmu=Inmueble(cc+1,"carr30","no","si","no",200,3,1,"enVenta")#Creacion de inmueble
+        compraV=Compraventa(cc,c,"20-11-1990",randint(1000,150000),"21-12-1992",inmu)#Creacion de contrato de compraventa enlazado a propietario e inmueble
+        inmu.setCompraventa(compraV)#enlace inmueble con la compraventa
+        c.addCompraventa(compraV)#enlace propietario con compraventa
+        lista_inmuebles.append(inmu)
+        lista_compraventas.append(compraV)
+        lista_propietarios.append(c)
+        cc=cc+1
 
 
 #comienza el programa
@@ -40,15 +92,16 @@ while(True):
         break
     
     elif(opcion1 == 1):
-        print(msg.err[idioma])
+        agregarDatosFicticios()
+        print(msg.datosFicticios[idioma])
         
     elif(opcion1 == 2): #segunda opcion menu principal
-        print("ingres nombre")
-        nomb = str(input())
+        print("Ingresar cedula:")
+        ced = int(input())
         print(msg.ingreso_contra[idioma])
         contra = str(input())
 
-        logeado = Usuario.login(nomb, contra, lista_funcionarios)
+        logeado = Usuario.login(ced, contra, lista_funcionarios)
         if(logeado != None):
             print(msg.bienv_fun[idioma]+logeado.getNombre()) #Ingreso exitoso como funcionario
 
