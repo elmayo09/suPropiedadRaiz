@@ -51,7 +51,7 @@ class Compraventa:
         self._inmueble=inmueble
         
     def toString(self):
-        printer = "{"+"codigo: "+str(self._codigo)+", fecha: "+str(self._fecha)+", valor: "+str(self._valor)+", fechafin: "+str(self._fechafin)+", inmueble: "+str(self._inmueble)+", propietario: "+str(self._propietario)+", comprador: "+str(self._comprador)+" }"
+        printer = "{"+"codigo: "+str(self._codigo)+", fecha: "+str(self._fecha)+", valor: "+str(self._valor)+", fechafin: "+str(self._fechafin)+", inmueble: "+str(self._inmueble.toString())+", propietario: "+str(self._propietario)+", comprador: "+str(self._comprador)+" }"
         return printer
     
     @staticmethod
@@ -69,3 +69,8 @@ class Compraventa:
             if compraventa.getPropietario==propietario:
                 lista.append(compraventa)
         return lista
+    
+    @staticmethod
+    def mostrarCompraventas(compraventas):
+        for compraventa in compraventas:
+            print(compraventa.toString())
