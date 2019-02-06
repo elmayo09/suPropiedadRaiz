@@ -26,13 +26,21 @@ class Arriendo:
     def setFechafin(self, fef):
         self._fechafin = fef
 
-    def getCliente(self):
-        return self._cliente
+    def getPropietario(self):
+        return self._propietario
 
-    def setCliente(self,cliente):
-        self._cliente=cliente
+    def setPropietario(self,propietario):
+        self._propietario=propietario
+
+    def getArrendatario(self):
+        return self._arrendatario
+
+    def setArrendatario(self,arrendatario):
+        self._arrendatario=arrendatario
 
     def getInmbueble(self):
+        return self._inmueble
+    def setInmueble(self, inmueble):
         return self._inmueble
         
     def toString(self):
