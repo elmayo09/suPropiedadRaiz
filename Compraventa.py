@@ -46,7 +46,10 @@ class Compraventa:
 
     def getInmbueble(self):
         return self._inmueble
-
+    
+    def setInmueble(self,inmueble):
+        self._inmueble=inmueble
+        
     def toString(self):
         printer = "{"+"codigo: "+str(self._codigo)+", fecha: "+str(self._fecha)+", valor: "+str(self._valor)+", fechafin: "+str(self._fechafin)+", inmueble: "+str(self._inmueble)+", propietario: "+str(self._propietario)+", comprador: "+str(self._comprador)+" }"
         return printer
