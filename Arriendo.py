@@ -44,7 +44,7 @@ class Arriendo:
         return self._inmueble
         
     def toString(self):
-        printer = "{"+"codigo: "+str(self._codigo)+", fecha inicio: "+str(self._fechainicio)+", costo mensual: "+str(self._costomensual)+", fechafin: "+str(self._fechafin)+", inmueble: "+str(self._inmueble)+", propietario: "+str(self._propietario)+", arrendatario: "+str(self._arrendatario)+" }"
+        printer = "{"+"codigo: "+str(self._codigo)+", fecha inicio: "+str(self._fechainicio)+", costo mensual: "+str(self._costomensual)+", fechafin: "+str(self._fechafin)+", inmueble: "+str(self._inmueble.toString())+", propietario: "+str(self._propietario)+", arrendatario: "+str(self._arrendatario)+" }"
         return printer
         
     @staticmethod
@@ -62,5 +62,10 @@ class Arriendo:
             if arriendo.getCostomensual>mayor.getCostomensual:
                 mayor=arriendo
         return mayor
+    
+    @staticmethod
+    def mostrarArriendos(arriendos):
+        for arriendo in arriendos:
+            print(arriendo.toString())
 
         
