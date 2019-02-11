@@ -1,6 +1,6 @@
 class Mensaje:
     title = "---------SuPropiedadRaiz-----------\n"
-    bienv = "*Welcome, select the language/Bienvenido, seleccione el idioma*"
+    bienv = "*Welcome, select the language*"
     gracias = { "1":"Thanks for your visit.", "2" : "Gracias por visitarnos."}
     en_es = "1. English.\n2. Español."
     err = { "1" : "Wrong option, try again", "2" : "Opción incorrecta, inténtelo de nuevo"}
