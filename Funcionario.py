@@ -5,8 +5,9 @@ class Funcionario(Usuario):
         super().__init__(cedula,nombre,contrasena,correo)
         self._sueldo=sueldo
         self._comision=comision
-        self._compraventas=[]
-        self._arriendos=[]
+        #self._compraventas=[]
+        #self._arriendos=[]
+        self._contratos=[]
 
     def getSueldo(self):
         return self._sueldo
@@ -16,16 +17,17 @@ class Funcionario(Usuario):
         return self._comision
     def setComision(self,comision):
         self._comision=comision
-    def getListaConmpraventas(self):
-        return self._compraventas
-    def addCompraventa(self,contrato):
-        self._arriendos.append(contrato)
-    def getListaArriendos(self):
-        return self._arriendos
-    def addArriendo(self,contrato):
-        self._arriendos.append(contrato)
-
-    def toString(self):
+    #def getListaConmpraventas(self):
+     #   return self._compraventas
+    #def addCompraventa(self,contrato):
+     #   self._arriendos.append(contrato)
+    #def getListaArriendos(self):
+     #   return self._arriendos
+    #def addArriendo(self,contrato):
+     #   self._arriendos.append(contrato)
+    def addContrato(self, contrato):
+        self._contratos.append(contrato)
+    def __str__(self):
         printer = "Funcionario: {"+"cedula: "+str(self._cedula)+", nombre: "+str(self._nombre)+", correo: "+str(self._correo)+", sueldo: "+str(self._sueldo)+", comision: "+str(self._comision)+" }"
         return printer
            
