@@ -1,3 +1,4 @@
+
 from Arriendo import Arriendo
 from Cliente import Cliente
 from Compraventa import Compraventa
@@ -335,4 +336,3 @@ while(True):
             
     elif(opcion1 == 5): #Opcion 5 del menu principal
         print(msg.err[idioma])
-        

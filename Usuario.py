@@ -1,3 +1,4 @@
+
 class Usuario:
     def __init__(self,cedula,nombre,contrasena,correo="No"):
         self._cedula=cedula
@@ -29,4 +30,3 @@ class Usuario:
                 else:
                     return None
         return None
-

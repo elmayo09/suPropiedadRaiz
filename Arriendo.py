@@ -1,3 +1,4 @@
+
 class Arriendo:
     def __init__(self, codigo, fechainicio, costomensual, fechafin, inmueble, propietario, arrendatario=None):
         self._codigo = codigo
@@ -67,5 +68,3 @@ class Arriendo:
     def mostrarArriendos(arriendos):
         for arriendo in arriendos:
             print(arriendo.toString())
-
-        

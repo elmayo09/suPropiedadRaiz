@@ -1,3 +1,4 @@
+
 from Usuario import Usuario
 class Funcionario(Usuario):
     def __init__(self,cedula,nombre, contrasena,sueldo,comision,correo="No"):
@@ -41,7 +42,3 @@ class Funcionario(Usuario):
     def mostrarFuncionarios(lista):
         for u in lista:
             print(u.toString())
-
-
-
-

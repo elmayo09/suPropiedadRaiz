@@ -1,3 +1,4 @@
+
 class Inmueble:
     listaInmuebles = []
     def __init__(self, estrato, direccion, vigilancia, servicios, ascensor, area, cuartos, banos, tipo):
@@ -107,7 +108,3 @@ class Inmueble:
             if(inmuebles.getTipo() == "venta"):
                 listaArriendo.append(inmuebles.toString())
         return listaArriendo
-        
-
-
-

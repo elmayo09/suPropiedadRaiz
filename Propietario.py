@@ -1,3 +1,4 @@
+
 from Usuario import Usuario
 class Propietario(Usuario):
     def __init__(self,cedula,nombre, contrasena,direccion,correo="No"):
@@ -23,4 +24,3 @@ class Propietario(Usuario):
         return self._arriendos
     def addArriendo(self,contrato):
         self._arriendos.append(contrato)
-    

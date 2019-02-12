@@ -1,3 +1,4 @@
+
 class Compraventa:
     def __init__(self,codigo, propietario, fecha, valor, fechafin,inmueble,comprador=None):
         self._codigo=codigo

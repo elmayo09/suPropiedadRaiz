@@ -1,3 +1,4 @@
+
 from Usuario import Usuario
 class Cliente(Usuario):
     def __init__(self,cedula,nombre, contrasena,direccion,correo="No"):
@@ -31,8 +32,4 @@ class Cliente(Usuario):
     def mostrarClientes(lista):
         for u in lista:
             print(u.toString())
-
-
-
-
 
