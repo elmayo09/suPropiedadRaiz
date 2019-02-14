@@ -130,7 +130,7 @@ while(True):
                     nuevo = Funcionario(cedula, nombre, contrasena, sueldo, comision, correo)
                     lista_funcionarios.append(nuevo)
 
-                    print(msg.agg[idioma]+"\n"+nuevo.toString())
+                    print(msg.agg[idioma]+"\n"+nuevo.__str__())
 
                 elif(opcion2 == 2):  #Ver el que tiene mayor sueldo
                     print(msg.sueldo[idioma])
@@ -290,13 +290,13 @@ while(True):
                     correo_cliente = str(input())
                     cliente_nuevo = Cliente(cedula_cliente, nombre_cliente, contrasena_cliente, direccion_cliente, correo_cliente)
                     lista_clientes.append(cliente_nuevo)
-                    print("Cliente registrado correctamente: \n"+cliente_nuevo.toString())
+                    print("Cliente registrado correctamente: \n"+cliente_nuevo.__str__())
                     break
 
                 elif(opcion_correo == 2): #Registra cliente sin correo
                     cliente_nuevo = Cliente(cedula_cliente, nombre_cliente, contrasena_cliente, direccion_cliente)
                     lista_clientes.append(cliente_nuevo)
-                    print("Cliente registrado correctamente: \n"+cliente_nuevo.toString())
+                    print("Cliente registrado correctamente: \n"+cliente_nuevo.__str__())
                     break
 
                 else: #No ingresa 1 o 2
