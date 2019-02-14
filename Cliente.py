@@ -7,6 +7,7 @@ class Cliente:
         self._contrasena=contrasena
         self._direccion=direccion
         self._contratos=[]
+        #
 
     def __str__(self):
         printer = "Cliente: { cedula: "+str(self._cedula)+" ,nombre: "+str(self._nombre)+" ,direccion: "+str(self._direccion)+", correo: "+str(self._correo)+" }"
