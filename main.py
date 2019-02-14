@@ -2,19 +2,16 @@
 from Arriendo import Arriendo
 from Cliente import Cliente
 from Compraventa import Compraventa
-from Funcionario import Funcionario
 from Inmueble import Inmueble
 from Propietario import Propietario
-from Usuario import Usuario
 from mensaje import Mensaje as msg
 from random import *
 
 codigos_unicos = 1000 #main
 
 lista_propietarios=[]
-lista_funcionarios = []
 lista_clientes = []
-listacompraventas = []
+lista_compraventas = []
 lista_arriendos= []
 lista_compraventas=[]
 lista_inmuebles=[]
@@ -24,31 +21,22 @@ nombres=["Andres Gimenez","Maria Taja","Lina Gutierrez","Juan Sarrias","Carlos i
 
 
 def agregarDatosFicticios():
-    primer_funcionario = Funcionario(1234, "admin", "1234", 660000, 40000, "abc@sp.com")
-    lista_funcionarios.append(primer_funcionario)
+    primer_propietario = Propietario(1234, "admin", "1234", "car40A12", "abc@sp.com")
+    lista_propietarios.append(primer_propietario)
     clientePrueba=Cliente(99,"prueba","1234", "car."+str(randint(60,150)))
     lista_clientes.append(clientePrueba)
     #Funcionarios----------------------------------------------------
     cc=0;
-    while cc<10:
-        p=""
-        #Generador de contrasenas aleatorias
-        p = p.join([choice(valoresPassword) for i in range(5)])
-        #print(p)
-        f= Funcionario(cc,nombres[cc], p,randint(600000,1500000),randint(10000,1000000),nombres[cc].replace(" ", "") +"@gmail.com")
-        lista_funcionarios.append(f)
-        cc=cc+1
-
     #Propietarios con inmuebles en arriendo   ----------------------
-    while cc< 15:
+    while cc< 10:
         p=""
         #Generador de contrasenas aleatorias
         p = p.join([choice(valoresPassword) for i in range(5)])
         c=Propietario(cc,nombres[cc],p, "car."+str(randint(60,150)))#Creacion de propietario
-        inmu=Inmueble(cc+1,"carr30","no","si","no",200,3,1,"enArriendo")#Creacion de inmueble
+        inmu=Inmueble(cc+1,"car."+str(randint(160,250)),False,True,randint(300,500),3,1,"enArriendo",9,"Medellin",c)#Creacion de inmueble
+        c.addInmueble(inmu)#enlace propietario con inmueble
         arrie=Arriendo(cc,"20-11-1990",randint(1000,150000),"21-12-1992",inmu,c,)#Creacion de contrato de arriendo enlazado a propietario e inmueble
         inmu.addArriendo(arrie)#enlace inmueble con arriendo
-        c.addArriendo(arrie)#enlace propietario con arriendo
         lista_inmuebles.append(inmu)
         lista_arriendos.append(arrie)
         lista_propietarios.append(c)
@@ -60,10 +48,10 @@ def agregarDatosFicticios():
         #Generador de contrasenas aleatorias
         p = p.join([choice(valoresPassword) for i in range(5)])
         c=Propietario(cc,nombres[cc],p, "car."+str(randint(60,150)))#Creacion de propietario
-        inmu=Inmueble(cc+1,"carr30","no","si","no",200,3,1,"enVenta")#Creacion de inmueble
+        inmu=Inmueble(cc+1,"car."+str(randint(160,250)),False,True,randint(300,500),3,1,"enArriendo",9,"Medellin",c)#Creacion de inmueble
+        c.addInmueble(inmu)#enlace propietario con inmueble
         compraV=Compraventa(cc,c,"20-11-1990",randint(1000,150000),"21-12-1992",inmu)#Creacion de contrato de compraventa enlazado a propietario e inmueble
         inmu.setCompraventa(compraV)#enlace inmueble con la compraventa
-        c.addCompraventa(compraV)#enlace propietario con compraventa
         lista_inmuebles.append(inmu)
         lista_compraventas.append(compraV)
         lista_propietarios.append(c)
@@ -73,7 +61,7 @@ def agregarDatosFicticios():
 #comienza el programa
 print(msg.title)
 print(msg.bienv)
-idioma = 0 #idioma = 1 para ingles, idioma = 2 para espanol
+idioma = 0 #idioma = 1 para ingles, idioma = 2 para español
 while(True):
     print(msg.en_es)
     idioma = int(input())
@@ -169,33 +157,33 @@ while(True):
                                     codigo = codigos_unicos  #el codigo siempre sera diferente para cada compraventa
                                     arrendamiento_nuevo = Arriendo(codigo, fechainicio, costo_mensual, fechafin, inmueble, cedula_propietario)
 
-                                    lista_arriendos.append(arrendamiento_nuevo) #la anade a la lista general
+                                    lista_arriendos.append(arrendamiento_nuevo) #la añade a la lista general
                                     print("Arrendamiento publicado exitosamente")
                                     print(arrendamiento_nuevo.toString())
                                     break
                                 else:
                                     print("no valida opcion")
                             else:  #el inmueble no esta disponible
-                                print("El inmueble no esta disponible para arrendamiento ni compraventa")
+                                print("El inmueble no está disponible para arrendamiento ni compraventa")
                                 break
                     if(encontrado == False):  #Si la direccion no aparece, el inmueble no existe
                         print("1. Compraventa.\n2. Arrendamiento.\n0. Regresar al menu")
                         opcion4 = int(input())  #opciones para el menu de registro compraventa o arriendo
 
                         
-                        print("Ingrese el numero de estrato del inmueble: ")
+                        print("Ingrese el número de estrato del inmueble: ")
                         estrato = int(input())
                         print("Si el inmueble tiene vigilancia, escriba 'si', de lo contrario escriba 'no': ")
                         vigilancia = str(input())
-                        print("Si el inmueble tiene servicios basicos, escriba 'si', de lo contrario escriba 'no': ")
+                        print("Si el inmueble tiene servicios básicos, escriba 'si', de lo contrario escriba 'no': ")
                         servicios = str(input())
                         print("Si el inmueble tiene ascensor, escriba 'si', de lo contrario escriba 'no': ")
                         ascensor = str(input())
                         print("Ingrese el area del inmueble en metros cuadrados: ")
                         area = int(input())
-                        print("Ingrese el numero de banos del inmueble: ")
+                        print("Ingrese el número de baños del inmueble: ")
                         banos = int(input())
-                        print("Ingrese el numero de cuartos del inmueble: ")
+                        print("Ingrese el número de cuartos del inmueble: ")
                         cuartos = int(input())
                         
                         if(opcion4 == 0 ): #Regreso al menu funcionario
@@ -218,8 +206,8 @@ while(True):
 
                             
                             print("Compraventa publicada exitosamente")
-                            lista_compraventas.append(compraventa_nueva) #la anade a la lista general
-                            Inmueble.listaInmuebles.append(inmueble_nuevo) #anade el inmueble a la lista inmuebles
+                            lista_compraventas.append(compraventa_nueva) #la añade a la lista general
+                            Inmueble.listaInmuebles.append(inmueble_nuevo) #añade el inmueble a la lista inmuebles
                             print(compraventa_nueva.toString())
                             
                         elif(opcion4==2):  #Pide los datos para registrar arriendo
@@ -237,12 +225,12 @@ while(True):
                             codigos_unicos  += 1 #aumenta en 1 los codigos en general de la clase compraventa
                             codigo = codigos_unicos  #el codigo siempre sera diferente para cada compraventa
                             arrendamiento_nuevo = Arriendo(codigo, fechainicio, costo_mensual, fechafin, inmueble_nuevo, cedula_propietario)
-                            lista_arriendos.append(arrendamiento_nuevo) #la anade a la lista general
+                            lista_arriendos.append(arrendamiento_nuevo) #la añade a la lista general
 
                             
                             print("Arrendamiento publicado exitosamente")
                             print(arrendamiento_nuevo.toString())
-                            Inmueble.listaInmuebles.append(inmueble_nuevo) #anade el inmueble a la lista inmuebles
+                            Inmueble.listaInmuebles.append(inmueble_nuevo) #añade el inmueble a la lista inmuebles
                         else: #opcion no valida en el menu funcionario
                             print("no opcion valida")
                             break
@@ -275,7 +263,7 @@ while(True):
         if(encontrado == False):  #No hay un cliente con esa cedula
             print("Ingrese su nombre: ")
             nombre_cliente = str(input())
-            print("Ingrese su contrasena: ")
+            print("Ingrese su contraseña: ")
             contrasena_cliente = str(input())
             print("Ingrese su direccion: ")
             direccion_cliente = str(input())
@@ -317,7 +305,7 @@ while(True):
             opciones_cliente = -1  #opcion2 = opciones del menu cliente
             while(True):  # Ingreso al menu cliente
                 print("Seleccione una de las siguientes opciones: ")
-                print(" 1. Ver ofertas de arrendamiento. \n 2. Ver ofertas de compraventa. \n 0. Regresar al menu principal")
+                print(" 1. Ver ofertas de arrendamiento. \n 2. Ver ofertas de compraventa. \n 0. Regresar al menú principal")
                 opciones_cliente = int(input())
 
                 if(opciones_cliente == 0): #Salir del menu cliente
