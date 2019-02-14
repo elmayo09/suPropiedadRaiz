@@ -16,7 +16,7 @@ class Inmueble:
         
 
     def toString(self):
-        printer = "{"+"estrato: "+str(self._estrato)+", direccion: "+str(self._direccion)+", vigilancia: "+str(self._vigilancia)+", servicios: "+str(self._servicios)+", ascensor: "+str(self._ascensor)+", area: "+str(self._area)+", baños: "+str(self._banos)+", cuartos: "+str(self._cuartos)+", tipo: "+str(self._tipo)+", compraventa: "+str(self._compraventa)+" }"
+        printer = "{"+"estrato: "+str(self._estrato)+", direccion: "+str(self._direccion)+", vigilancia: "+str(self._vigilancia)+", servicios: "+str(self._servicios)+", ascensor: "+str(self._ascensor)+", area: "+str(self._area)+", banos: "+str(self._banos)+", cuartos: "+str(self._cuartos)+", tipo: "+str(self._tipo)+", compraventa: "+str(self._compraventa)+" }"
         return printer
     
     def getEstrato(self):
