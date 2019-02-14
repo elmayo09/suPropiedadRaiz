@@ -1,11 +1,10 @@
 
 class Inmueble:
     listaInmuebles = []
-    def __init__(self, estrato, direccion, vigilancia, servicios, ascensor, area, cuartos, banos, tipo):
+    def __init__(self, estrato, direccion, vigilancia, ascensor, area, cuartos, banos, tipo,antiguedad,ciudad,propietario):
         self._estrato = estrato
         self._direccion = direccion
         self._vigilancia = vigilancia
-        self._servicios = servicios
         self._ascensor = ascensor
         self._area = area
         self._banos = banos
@@ -13,10 +12,12 @@ class Inmueble:
         self._tipo = tipo    #El tipo es para saber ACTUALMENTE si esta en compra-venta o en arriendo(A1=EnArriendo, A2=Arrendada, V1=enventa, V2=Vendida)
         self._arriendo=[]
         self._compraventa=None
-        
+        self._propietario=propietario
+        self._ciudad=ciudad  
+        self._antiguedad=antiguedad   
 
-    def toString(self):
-        printer = "{"+"estrato: "+str(self._estrato)+", direccion: "+str(self._direccion)+", vigilancia: "+str(self._vigilancia)+", servicios: "+str(self._servicios)+", ascensor: "+str(self._ascensor)+", area: "+str(self._area)+", banos: "+str(self._banos)+", cuartos: "+str(self._cuartos)+", tipo: "+str(self._tipo)+", compraventa: "+str(self._compraventa)+" }"
+    def __str__(self):
+        printer = "{"+"estrato: "+str(self._estrato)+", direccion: "+str(self._direccion)+", vigilancia: "+str(self._vigilancia)+", servicios: "+str(self._servicios)+", ascensor: "+str(self._ascensor)+", area: "+str(self._area)+", baños: "+str(self._banos)+", cuartos: "+str(self._cuartos)+", tipo: "+str(self._tipo)+", compraventa: "+str(self._compraventa)+" }"
         return printer
     
     def getEstrato(self):
@@ -36,12 +37,6 @@ class Inmueble:
 
     def setVigilancia(self,vi):
         self._vigilancia = vi
-    
-    def getServicios(self):
-        return self._servicios
-    
-    def setServicios(self,ser):
-        self._servicios = ser
     
     def getAscensor(self):
         return self._ascensor
@@ -97,7 +92,7 @@ class Inmueble:
     def buscarInmueblesEnArriendo(lista):
         listaArriendo = []
         for inmuebles in lista:
-            if(inmuebles.getTipo() == "arriendo"):
+            if(inmuebles.getTipo() == "enArriendo"):
                 listaArriendo.append(inmuebles.toString())
         return listaArriendo
 
@@ -105,6 +100,6 @@ class Inmueble:
     def buscarInmueblesEnVenta(lista):
         listaArriendo = []
         for inmuebles in lista:
-            if(inmuebles.getTipo() == "venta"):
+            if(inmuebles.getTipo() == "enVenta"):
                 listaArriendo.append(inmuebles.toString())
         return listaArriendo
