@@ -41,23 +41,23 @@ class Contrato:
         return printer
         
     @staticmethod
-    def precioMasBajo(arriendos):
-        menor=arriendos[0]
-        for Contrato in arriendos:
+    def precioMasBajo(contratos):
+        menor=contratos[0]
+        for Contrato in contratos:
             if Contrato.getValor<menor.getValor:
                 menor=Contrato
         return menor
 
     @staticmethod
-    def precioMasAlto(arriendos):
-        mayor=arriendos[0]
-        for Contrato in arriendos:
+    def precioMasAlto(contratos):
+        mayor=contratos[0]
+        for Contrato in contratos:
             if Contrato.getValor>mayor.getValor:
                 mayor=Contrato
         return mayor
     
     @staticmethod
-    def mostrarValorContrato(arriendos):
-        for contrato in arriendos:
+    def mostrarValorContrato(contratos):
+        for contrato in contratos:
             print(contrato.toString())
     
