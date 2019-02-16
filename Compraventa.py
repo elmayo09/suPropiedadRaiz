@@ -1,6 +1,5 @@
-
 class Compraventa:
-    def __init__(self,codigo, propietario, fecha, valor, fechafin,inmueble,comprador=None):
+    def __init__(self, codigo, propietario, fecha, valor, fechafin, inmueble, valorVenta, comprador=None):
         self._codigo=codigo
         self._fecha = fecha #fecha de pubicacion de la venta
         self._valor = valor
@@ -8,6 +7,7 @@ class Compraventa:
         self._inmueble=inmueble
         self._propietario=propietario
         self._comprador=comprador
+        self._valorVenta = valorVenta
 
     def getCodigo(self):
         return self._codigo
@@ -50,26 +50,32 @@ class Compraventa:
     
     def setInmueble(self,inmueble):
         self._inmueble=inmueble
+
+    def getValorVenta(self):
+        return self._valorVenta
+
+    def setCodigo(self, ValVen):
+        self._valorVenta = ValVen
         
     def toString(self):
-        printer = "{"+"codigo: "+str(self._codigo)+", fecha: "+str(self._fecha)+", valor: "+str(self._valor)+", fechafin: "+str(self._fechafin)+", inmueble: "+str(self._inmueble.toString())+", propietario: "+str(self._propietario)+", comprador: "+str(self._comprador)+" }"
+        printer = "{"+"codigo: "+str(self._codigo)+", fecha: "+str(self._fecha)+", valor: "+str(self._valor)+", fechafin: "+str(self._fechafin)+", inmueble: "+str(self._inmueble.toString())+", propietario: "+str(self._propietario)", valor_venta: "+str(self._valorVenta)+", comprador: "+str(self._comprador)+" }"
         return printer
     
     @staticmethod
-    def sinComprador(compraventas):
-        lista=[]
-        for compraventa in compraventas:
-            if compraventa.getComprador==None:
-                lista.append(compraventa)
-        return lista
-    
+    def precioMasBajo(compraventas):
+        menor=compraventas[0]
+        for Compraventa in compraventas:
+            if Compraventa.getValor<menor.getValor:
+                menor=compraventa
+        return menor
+
     @staticmethod
-    def compraventaPorPropietario(compraventas, propietario):
-        lista=[]
-        for compraventa in compraventas:
-            if compraventa.getPropietario==propietario:
-                lista.append(compraventa)
-        return lista
+    def precioMasAlto(compraventas):
+        mayor=compraventas[0]
+        for Compraventa in compraventas:
+            if Compraventa.getValor>mayor.getValor:
+                mayor=Compraventa
+        return mayor
     
     @staticmethod
     def mostrarCompraventas(compraventas):
