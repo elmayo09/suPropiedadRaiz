@@ -33,6 +33,8 @@ class Propietario:
         self._direccion=direccion
     def addInmueble(self,inmueble):
         self._inmuebles.append(inmueble)
+    def getInmuebles(self):
+        return self._inmuebles
 
     @staticmethod
     def login(ced, contra, lista):
