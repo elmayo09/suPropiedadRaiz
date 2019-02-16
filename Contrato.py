@@ -1,6 +1,6 @@
 class Contrato:
-    def __init__(self, fecha, valor, propietario, inmueble):
-        self._
+    def __init__(self, codigo, fecha, valor, propietario, inmueble):
+        self._codigo = codigo
         self._fecha = fecha
         self._valor = valor
         self._propietario = propietario
