@@ -68,6 +68,12 @@ class Inmueble:
     def setTipo(self,ti):
         self._tipo = ti
 
+    def getCiudad(self):
+        return self._ciudad
+
+    def setCiudad(self, ciu):
+        self._ciudad = ciu
+
     def getArriendo(self):
         return self._arriendo
 

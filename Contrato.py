@@ -1,15 +1,16 @@
 class Contrato:
     def __init__(self, codigo, fecha, valor, propietario, inmueble):
-        self._coido = codigo
+        self._codigo = codigo
         self._fecha = fecha#fecha de pubicacion del contrato
         self._valor = valor
+        self._propietario = propietario
         self._inmueble = inmueble
 
     def getCodigo(self):
-        return self._coido
+        return self._codigo
 
     def setCodigo(self, codigo):
-        self._coido = codigo
+        self._codigo = codigo
 
     def getFecha(self):
         return self._fecha
@@ -20,7 +21,7 @@ class Contrato:
     def getValor(self):
         return self._valor
 
-    def setVAlor(self, val):
+    def setValor(self, val):
         self._valor = val
         
     def getPropietario(self):
@@ -29,11 +30,15 @@ class Contrato:
     def setPropietario(self,propietario):
         self._propietario = propietario
 
-    def getInmbueble(self):
+    def getInmueble(self):
         return self._inmueble
 
     def setInmueble(self, inmueble):
         self._inmueble = inmueble
+
+    def __str__(self):
+        printer = "{"+"codigo: "+str(self._codigo)+", fecha: "+str(self._fecha)+", valor: "+str(self._valor)+", inmueble: "+str(self._inmueble.__str__())+", propietario: "+str(self._propietario.__str__)+" }"
+        return printer
         
     @staticmethod
     def precioMasBajo(contratos):
@@ -54,5 +59,10 @@ class Contrato:
     @staticmethod
     def mostrarValoresContratos(contratos):
         for contrato in contratos:
-            print(contrato.toString())
+            print(contrato.__str__())
     
+    @staticmethod
+    def buscarPorCiudad(contratos, ciudad):
+    	for contrato in contratos:
+    		if (contrato.getInmueble().getCiudad() == ciudad):
+    			print(contrato.__str__())
