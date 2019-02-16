@@ -1,10 +1,9 @@
 
 class Arriendo:
-    def __init__(self, codigo, fechainicio, costomensual, fechafin, inmueble, propietario, arrendatario=None):
+    def __init__(self, codigo, fechainicio, costomensual, inmueble, propietario, arrendatario=None):
         self._codigo = codigo
         self._fechainicio = fechainicio
         self._costomensual = costomensual
-        self._fechafin = fechafin
         self._inmueble=inmueble
         self._propietario=propietario
         self._arrendatario=arrendatario
@@ -21,12 +20,6 @@ class Arriendo:
     def setCostomensual(self, co):
         self._costomensual = co
         
-    def getFechafin(self):
-        return self._fechafin
-
-    def setFechafin(self, fef):
-        self._fechafin = fef
-
     def getPropietario(self):
         return self._propietario
 
