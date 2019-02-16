@@ -19,11 +19,17 @@ lista_inmuebles=[]
 valoresPassword = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ<=>@#%&+"
 nombres=["Andres Gimenez","Maria Taja","Lina Gutierrez","Juan Sarrias","Carlos inut","Pepe Grillo","Sara Macias","Eduardo Mejia","Yeremi Guarin","Martina Tamayo",
     "Martin Correa","Cristina Mejia", "Emanuel Valencia", "Cristopher Amaya","Jose Mercado","Josue Galindo","Natalia Osorio","Edgar Aguirre","Emilio del monte","Miranda Rodas"]
-
+codigo_contrato=1000
 
 def agregarDatosFicticios():
     primer_propietario = Propietario(1234, "admin", "1234", "car40A12", "abc@sp.com")
     lista_propietarios.append(primer_propietario)
+    inmu=Inmueble(0,"car."+str(randint(160,250)),False,True,randint(300,500),3,1,"enArriendo",9,"Medellin",primer_propietario)#Creacion de inmueble
+    arrie=Arriendo(0,"20-11-1900","21-12-1990",randint(1000,150000),inmu,primer_propietario,False)#Creacion de contrato de arriendo enlazado a propietario e inmueble
+    inmu.addArriendo(arrie)#enlace inmueble con arriendo
+    primer_propietario.addInmueble(inmu)
+    lista_arriendos.append(arrie)
+    lista_inmuebles.append(inmu)
     clientePrueba=Cliente(99,"prueba","1234", "car."+str(randint(60,150)))
     lista_clientes.append(clientePrueba)
     #Funcionarios----------------------------------------------------
@@ -36,7 +42,7 @@ def agregarDatosFicticios():
         c=Propietario(cc,nombres[cc],p, "car."+str(randint(60,150)))#Creacion de propietario
         inmu=Inmueble(cc+1,"car."+str(randint(160,250)),False,True,randint(300,500),3,1,"enArriendo",9,"Medellin",c)#Creacion de inmueble
         c.addInmueble(inmu)#enlace propietario con inmueble
-        arrie=Arriendo(cc,"20-11-1990",randint(1000,150000),"21-12-1992",inmu,c,)#Creacion de contrato de arriendo enlazado a propietario e inmueble
+        arrie=Arriendo(cc,"20-11-1990","21-12-1992",randint(1000,150000),inmu,c,False)#Creacion de contrato de arriendo enlazado a propietario e inmueble
         inmu.addArriendo(arrie)#enlace inmueble con arriendo
         lista_inmuebles.append(inmu)
         lista_arriendos.append(arrie)
@@ -51,14 +57,14 @@ def agregarDatosFicticios():
         c=Propietario(cc,nombres[cc],p, "car."+str(randint(60,150)))#Creacion de propietario
         inmu=Inmueble(cc+1,"car."+str(randint(160,250)),False,True,randint(300,500),3,1,"enArriendo",9,"Medellin",c)#Creacion de inmueble
         c.addInmueble(inmu)#enlace propietario con inmueble
-        compraV=Compraventa(cc,c,"20-11-1990",randint(1000,150000),"21-12-1992",inmu)#Creacion de contrato de compraventa enlazado a propietario e inmueble
+        compraV=Compraventa(cc,c,"20-11-1990",randint(1000,150000),inmu,"Efectivo")#Creacion de contrato de compraventa enlazado a propietario e inmueble
         inmu.setCompraventa(compraV)#enlace inmueble con la compraventa
         lista_inmuebles.append(inmu)
         lista_compraventas.append(compraV)
         lista_propietarios.append(c)
         cc=cc+1
 
-Ficticios.datos_desde_txt("ficticios.txt",lista_clientes) #agrega clientes ficticios desde txt
+
 #comienza el programa
 print(msg.title)
 print(msg.bienv)
@@ -81,19 +87,20 @@ while(True):
         print(msg.gracias[idioma]) 
         break
     
-    elif(opcion1 == 1):
+    elif(opcion1 == 1):#primera opcion agregar datos ficticios
         agregarDatosFicticios()
+        Ficticios.datos_desde_txt("ficticios.txt",lista_clientes) #agrega clientes ficticios desde txt
         print(msg.datosFicticios[idioma])
         
-    elif(opcion1 == 2): #segunda opcion menu principal
+    elif(opcion1 == 2): #segunda opcion menu principal #ingreso propietario
         print("Ingresar cedula:")
         ced = int(input())
         print(msg.ingreso_contra[idioma])
         contra = str(input())
 
-        logeado = Usuario.login(ced, contra, lista_funcionarios)
+        logeado = Propietario.login(ced, contra, lista_propietarios)
         if(logeado != None):
-            print(msg.bienv_fun[idioma]+logeado.getNombre()) #Ingreso exitoso como funcionario
+            print(msg.bienv_fun[idioma]+logeado.getNombre()) #Ingreso exitoso como propietario
 
             opcion2 = -1  #opcion2 = opciones del menu funcionario
             while(True):  # Ingreso al menu funcionario
@@ -103,28 +110,71 @@ while(True):
                 if(opcion2 == 0): #Salir del menu funcionario
                     break
     
-                elif(opcion2 == 1): #Registrar otro funcionario
-                    print(msg.in_nombre[idioma])
-                    nombre = str(input())
-                    print(msg.in_cedula[idioma])
-                    cedula = int(input())
-                    print(msg.in_correo[idioma])
-                    correo = str(input())
-                    print(msg.in_contrasena[idioma])
-                    contrasena = str(input())
-                    print(msg.in_sueldo[idioma])
-                    sueldo = int(input())
-                    print(msg.in_comision[idioma])
-                    comision = int(input())
-                    nuevo = Funcionario(cedula, nombre, contrasena, sueldo, comision, correo)
-                    lista_funcionarios.append(nuevo)
+                elif(opcion2 == 1): #Registrar inmueble
+                    print("Estrato:")
+                    estrato = str(input())
+                    print("Direccion")
+                    direccion = str(input())
+                    print("Tiene vigilancia?(s|n):")
+                    vigilancia = str(input())
+                    if vigilancia=="s":
+                        vigilancia=True
+                    else: vigilancia=False
+                    print("Tiene ascensor?(s|n):")
+                    ascensor = str(input())
+                    if ascensor=="s":
+                        ascensor=True
+                    else: ascensor=False
+                    print("Area en metros cuadrados:")
+                    area = int(input())
+                    print("Cantidad de cuartos:")
+                    cuartos = int(input())
+                    print("Cantidad de baños:")
+                    banos = int(input())
+                    print("para arriendo o compraventa:")
+                    tipo = str(input())
+                    print("Años de antiguedad del inmueble:")
+                    antiguedad = int(input())
+                    print("Ciudad donde esta ubicado de inmueble:")
+                    ciudad = str(input())
+                    inmu=Inmueble(estrato,direccion,vigilancia,ascensor,area,cuartos,banos,tipo,antiguedad,ciudad,logeado)#Creacion de inmueble
+                    logeado.addInmueble(inmu)#enlace propietario con inmueble
+                    if tipo=="arriendo":
+                        #creacion arriendo
+                        print("Creacion de contrato de arriendo")
+                        codigo_contrato+=1
+                        print("Fecha donde inicia arriendo(dd/mm/aaaa):")
+                        fechainicio = str(input())
+                        print("Fecha donde finaliza el arriendo(dd/mm/aaaa):")
+                        fechafin = str(input())
+                        print("Valor de la mensulidad:")
+                        valor = int(input())
+                        print("Estara por medio de Agencia?(s|n)")
+                        agencia = str(input())
+                        if agencia=="s":
+                            agencia=True
+                        else: agencia=False
+                        arrie=Arriendo(codigo_contrato,fechainicio,fechafin,valor,inmu,logeado,agencia)#Creacion de contrato de arriendo enlazado a propietario e inmueble
+                        lista_inmuebles.append(inmu)
+                        lista_arriendos.append(arrie)
+                    else:
+                        #Creacion compraventa
+                        print("Creacion de contrato de compra-venta")
+                        codigo_contrato+=1
+                        print("Fecha (dd/mm/aaaa):")
+                        fecha = str(input())
+                        print("Valor de la mensulidad:")
+                        valor = int(input())
+                        print("Medio de pago:")
+                        medioPago = str(input())
+                        compraV=Compraventa(codigo_contrato,logeado,fecha,valor,inmu,medioPago)#Creacion de contrato de compraventa enlazado a propietario e inmueble
+                        inmu.setCompraventa(compraV)#enlace inmueble con la compraventa
+                        lista_inmuebles.append(inmu)
+                        lista_compraventas.append(compraV)
 
-                    print(msg.agg[idioma]+"\n"+nuevo.__str__())
 
-                elif(opcion2 == 2):  #Ver el que tiene mayor sueldo
-                    print(msg.sueldo[idioma])
-                    mayor = Funcionario.funcionarioMayorSueldo(lista_funcionarios)
-                    print(mayor.getNombre()+" : "+str(mayor.getSueldo()))
+                elif(opcion2 == 2):  #Ver los inmuebles del propietario actual
+                    Inmueble.verListaInmuebles(logeado.getInmuebles())
                     
                 elif(opcion2 == 3): #Ver lista de funcionarios
                     Funcionario.mostrarFuncionarios(lista_funcionarios)
