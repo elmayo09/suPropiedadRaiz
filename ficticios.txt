@@ -14,6 +14,6 @@ cedula: 7000778, nombre: Madara Uchiha, contrasena: 6sdfg, direccion: Calle 7#13
 
 cedula: 8000778, nombre: Helen Hernandez, contrasena: 7sdfg, direccion: Calle 7#21, correo: heln721@yimail.com.
 
-cedula: 9000778, nombre: Milena Montaño, contrasena: 8sdfg, direccion: Calle 7#34, correo: monta734@yimail.com.
+cedula: 9000778, nombre: Milena Montano, contrasena: 8sdfg, direccion: Calle 7#34, correo: monta734@yimail.com.
 
 cedula: 1100778, nombre: Carl Johnson, contrasena: 9sdfg, direccion: Calle 7#55, correo: groove755@yimail.com.
