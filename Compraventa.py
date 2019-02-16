@@ -57,8 +57,8 @@ class Compraventa:
     def setCodigo(self, ValVen):
         self._valorVenta = ValVen
         
-    def toString(self):
-        printer = "{"+"codigo: "+str(self._codigo)+", fecha: "+str(self._fecha)+", valor: "+str(self._valor)+", fechafin: "+str(self._fechafin)+", inmueble: "+str(self._inmueble.toString())+", propietario: "+str(self._propietario)", valor_venta: "+str(self._valorVenta)+", comprador: "+str(self._comprador)+" }"
+    def __str__(self):
+        printer = "Compraventa: {"+"codigo: "+str(self._codigo)+", fecha: "+str(self._fecha)+", valor: "+str(self._valor)+", fechafin: "+str(self._fechafin)+", inmueble: "+str(self._inmueble)+", valor_venta: "+str(self._valorVenta)+" }"
         return printer
     
     @staticmethod
