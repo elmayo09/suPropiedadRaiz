@@ -115,184 +115,79 @@ while(True):
                     estrato = str(input())
                     print("Direccion")
                     direccion = str(input())
-                    print("Tiene vigilancia?(s|n):")
-                    vigilancia = str(input())
-                    if vigilancia=="s":
-                        vigilancia=True
-                    else: vigilancia=False
-                    print("Tiene ascensor?(s|n):")
-                    ascensor = str(input())
-                    if ascensor=="s":
-                        ascensor=True
-                    else: ascensor=False
-                    print("Area en metros cuadrados:")
-                    area = int(input())
-                    print("Cantidad de cuartos:")
-                    cuartos = int(input())
-                    print("Cantidad de baños:")
-                    banos = int(input())
-                    print("para arriendo o compraventa:")
-                    tipo = str(input())
-                    print("Años de antiguedad del inmueble:")
-                    antiguedad = int(input())
-                    print("Ciudad donde esta ubicado de inmueble:")
-                    ciudad = str(input())
-                    inmu=Inmueble(estrato,direccion,vigilancia,ascensor,area,cuartos,banos,tipo,antiguedad,ciudad,logeado)#Creacion de inmueble
-                    logeado.addInmueble(inmu)#enlace propietario con inmueble
-                    if tipo=="arriendo":
-                        #creacion arriendo
-                        print("Creacion de contrato de arriendo")
-                        codigo_contrato+=1
-                        print("Fecha donde inicia arriendo(dd/mm/aaaa):")
-                        fechainicio = str(input())
-                        print("Fecha donde finaliza el arriendo(dd/mm/aaaa):")
-                        fechafin = str(input())
-                        print("Valor de la mensulidad:")
-                        valor = int(input())
-                        print("Estara por medio de Agencia?(s|n)")
-                        agencia = str(input())
-                        if agencia=="s":
-                            agencia=True
-                        else: agencia=False
-                        arrie=Arriendo(codigo_contrato,fechainicio,fechafin,valor,inmu,logeado,agencia)#Creacion de contrato de arriendo enlazado a propietario e inmueble
-                        lista_inmuebles.append(inmu)
-                        lista_arriendos.append(arrie)
-                    else:
-                        #Creacion compraventa
-                        print("Creacion de contrato de compra-venta")
-                        codigo_contrato+=1
-                        print("Fecha (dd/mm/aaaa):")
-                        fecha = str(input())
-                        print("Valor de la mensulidad:")
-                        valor = int(input())
-                        print("Medio de pago:")
-                        medioPago = str(input())
-                        compraV=Compraventa(codigo_contrato,logeado,fecha,valor,inmu,medioPago)#Creacion de contrato de compraventa enlazado a propietario e inmueble
-                        inmu.setCompraventa(compraV)#enlace inmueble con la compraventa
-                        lista_inmuebles.append(inmu)
-                        lista_compraventas.append(compraV)
-
+                    for inmueble in lista_inmuebles:  #busca la direccion entre los inmuebles existentes
+                        if(inmueble.getDireccion() == direccion):
+                            print("El inmueble ya existe")
+                            direccion=0
+                            break
+                    if direccion!=0:
+                        print("Tiene vigilancia?(s|n):")
+                        vigilancia = str(input())
+                        if vigilancia=="s":
+                            vigilancia=True
+                        else: vigilancia=False
+                        print("Tiene ascensor?(s|n):")
+                        ascensor = str(input())
+                        if ascensor=="s":
+                            ascensor=True
+                        else: ascensor=False
+                        print("Area en metros cuadrados:")
+                        area = int(input())
+                        print("Cantidad de cuartos:")
+                        cuartos = int(input())
+                        print("Cantidad de baños:")
+                        banos = int(input())
+                        print("para arriendo o compraventa:")
+                        tipo = str(input())
+                        print("Años de antiguedad del inmueble:")
+                        antiguedad = int(input())
+                        print("Ciudad donde esta ubicado de inmueble:")
+                        ciudad = str(input())
+                        inmu=Inmueble(estrato,direccion,vigilancia,ascensor,area,cuartos,banos,tipo,antiguedad,ciudad,logeado)#Creacion de inmueble
+                        logeado.addInmueble(inmu)#enlace propietario con inmueble
+                        if tipo=="arriendo":
+                            #creacion arriendo
+                            print("Creacion de contrato de arriendo")
+                            codigo_contrato+=1
+                            print("Fecha donde inicia arriendo(dd/mm/aaaa):")
+                            fechainicio = str(input())
+                            print("Fecha donde finaliza el arriendo(dd/mm/aaaa):")
+                            fechafin = str(input())
+                            print("Valor de la mensulidad:")
+                            valor = int(input())
+                            print("Estara por medio de Agencia?(s|n)")
+                            agencia = str(input())
+                            if agencia=="s":
+                                agencia=True
+                            else: agencia=False
+                            arrie=Arriendo(codigo_contrato,fechainicio,fechafin,valor,inmu,logeado,agencia)#Creacion de contrato de arriendo enlazado a propietario e inmueble
+                            lista_inmuebles.append(inmu)
+                            lista_arriendos.append(arrie)
+                        else:
+                            #Creacion compraventa
+                            print("Creacion de contrato de compra-venta")
+                            codigo_contrato+=1
+                            print("Fecha (dd/mm/aaaa):")
+                            fecha = str(input())
+                            print("Valor de la mensulidad:")
+                            valor = int(input())
+                            print("Medio de pago:")
+                            medioPago = str(input())
+                            compraV=Compraventa(codigo_contrato,logeado,fecha,valor,inmu,medioPago)#Creacion de contrato de compraventa enlazado a propietario e inmueble
+                            inmu.setCompraventa(compraV)#enlace inmueble con la compraventa
+                            lista_inmuebles.append(inmu)
+                            lista_compraventas.append(compraV)
 
                 elif(opcion2 == 2):  #Ver los inmuebles del propietario actual
                     Inmueble.verListaInmuebles(logeado.getInmuebles())
-                    
-                elif(opcion2 == 3): #Ver lista de funcionarios
-                    Funcionario.mostrarFuncionarios(lista_funcionarios)
-
-                elif(opcion2 == 4): #Registrar nueva compraventa o nuevo arriendo
-                    print("Ingrese la direccion del inmueble: ")
-                    direccion = str(input())
-                    encontrado = False
-                    for inmueble in Inmueble.listaInmuebles:  #busca la direccion entre los inmuebles existentes
-                        if(inmueble.getDireccion() == direccion):
-                            encontrado = True  #Ya existe un inmueble con esa direccion, solo sirve para arriendo
-                            print("Ya existe un inmueble con esa direccion.") 
-                            if((inmueble.getTipo()!="compraventa") and (inmueble.getTipo()!="arriendo")): #comprueba si esta disponible
-                                print("El inmueble solo esta disponible para arrendamiento.")
-                                print("1. Arrendamiento con este inmueble.\n0. Regresar al menu principal")
-                                opcion3 = int(input())  #Opciones para el menu de solo arrendamiento
-                                if(opcion3 == 0):
-                                    break
-                                elif(opcion3 ==1):  #arrendamiento para inmueble existente (direccion)
-                                    print("Ingrese los datos del arrendamiento")
-                                    print("Diga la cedula del ACTUAL propietario del inmueble: ")
-                                    cedula_propietario = int(input())
-                                    print("Diga el costo mensual del arrendamiento: ")
-                                    costo_mensual = int(input())
-                                    print("Diga la fecha de arrendamiento en formato: 'dd/mm/aaaa'")
-                                    fechainicio = str(input())
-                                    print("Diga la fecha de finalizacion de arrendamiento en formato: 'dd/mm/aaaa'")
-                                    fechafin = str(input())
-
-                                    codigos_unicos  += 1 #aumenta en 1 los codigos en general de la clase compraventa
-                                    codigo = codigos_unicos  #el codigo siempre sera diferente para cada compraventa
-                                    arrendamiento_nuevo = Arriendo(codigo, fechainicio, costo_mensual, fechafin, inmueble, cedula_propietario)
-
-                                    lista_arriendos.append(arrendamiento_nuevo) #la añade a la lista general
-                                    print("Arrendamiento publicado exitosamente")
-                                    print(arrendamiento_nuevo.toString())
-                                    break
-                                else:
-                                    print("no valida opcion")
-                            else:  #el inmueble no esta disponible
-                                print("El inmueble no está disponible para arrendamiento ni compraventa")
-                                break
-                    if(encontrado == False):  #Si la direccion no aparece, el inmueble no existe
-                        print("1. Compraventa.\n2. Arrendamiento.\n0. Regresar al menu")
-                        opcion4 = int(input())  #opciones para el menu de registro compraventa o arriendo
-
-                        
-                        print("Ingrese el número de estrato del inmueble: ")
-                        estrato = int(input())
-                        print("Si el inmueble tiene vigilancia, escriba 'si', de lo contrario escriba 'no': ")
-                        vigilancia = str(input())
-                        print("Si el inmueble tiene servicios básicos, escriba 'si', de lo contrario escriba 'no': ")
-                        servicios = str(input())
-                        print("Si el inmueble tiene ascensor, escriba 'si', de lo contrario escriba 'no': ")
-                        ascensor = str(input())
-                        print("Ingrese el area del inmueble en metros cuadrados: ")
-                        area = int(input())
-                        print("Ingrese el número de baños del inmueble: ")
-                        banos = int(input())
-                        print("Ingrese el número de cuartos del inmueble: ")
-                        cuartos = int(input())
-                        
-                        if(opcion4 == 0 ): #Regreso al menu funcionario
-                            break
-                        elif(opcion4==1):  #Pide los datos para registrar compraventa
-                            tipo = "compraventa"
-                            inmueble_nuevo = Inmueble(estrato, direccion, vigilancia, servicios, ascensor, area, cuartos, banos, tipo)
-                            print("Diga la cedula del ACTUAL propietario del inmueble: ")
-                            cedula_propietario = int(input())
-                            print("Diga la fecha de publicacion en formato: 'dd/mm/aaaa'")
-                            fechain = str(input())
-                            print("Diga el precio del inmueble: ")
-                            precio = int(input())
-                            print("Diga la fecha de compra en formato: 'dd/mm/aaaa'")
-                            fechacom = str(input())
-
-                            codigos_unicos  += 1 #aumenta en 1 los codigos en general de la clase compraventa
-                            codigo = codigos_unicos  #el codigo siempre sera diferente para cada compraventa
-                            compraventa_nueva = Compraventa(codigo, cedula_propietario, fechain, precio, fechacom, inmueble_nuevo)
-
-                            
-                            print("Compraventa publicada exitosamente")
-                            lista_compraventas.append(compraventa_nueva) #la añade a la lista general
-                            Inmueble.listaInmuebles.append(inmueble_nuevo) #añade el inmueble a la lista inmuebles
-                            print(compraventa_nueva.toString())
-                            
-                        elif(opcion4==2):  #Pide los datos para registrar arriendo
-                            tipo = "arrendamiento"
-                            inmueble_nuevo = Inmueble(estrato, direccion, vigilancia, servicios, ascensor, area, cuartos, banos, tipo)
-                            print("Diga la cedula del ACTUAL propietario del inmueble: ")
-                            cedula_propietario = int(input())
-                            print("Diga el costo mensual del arrendamiento: ")
-                            costo_mensual = int(input())
-                            print("Diga la fecha de arrendamiento en formato: 'dd/mm/aaaa'")
-                            fechainicio = str(input())
-                            print("Diga la fecha de finalizacion de arrendamiento en formato: 'dd/mm/aaaa'")
-                            fechafin = str(input())
-
-                            codigos_unicos  += 1 #aumenta en 1 los codigos en general de la clase compraventa
-                            codigo = codigos_unicos  #el codigo siempre sera diferente para cada compraventa
-                            arrendamiento_nuevo = Arriendo(codigo, fechainicio, costo_mensual, fechafin, inmueble_nuevo, cedula_propietario)
-                            lista_arriendos.append(arrendamiento_nuevo) #la añade a la lista general
-
-                            
-                            print("Arrendamiento publicado exitosamente")
-                            print(arrendamiento_nuevo.toString())
-                            Inmueble.listaInmuebles.append(inmueble_nuevo) #añade el inmueble a la lista inmuebles
-                        else: #opcion no valida en el menu funcionario
-                            print("no opcion valida")
-                            break
 
   
                         
 
-                elif(opcion2 == 6): #opcion 6 menu funcionario Aprobar compraventas
+                elif(opcion2 == 6): #opcion 6 menu propietario Aprobar compraventas
                     print("aprobar compraventas")
 
-                elif(opcion2 == 7): #opcion 7 menu funcionario Aprobar arriendos
+                elif(opcion2 == 7): #opcion 7 menu propietario Aprobar arriendos
                     print("aprobar arriendos")
 
 
