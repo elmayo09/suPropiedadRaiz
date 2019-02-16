@@ -1,61 +1,22 @@
 
-class Arriendo:
-    def __init__(self, codigo, fechainicio, costomensual, inmueble, propietario, arrendatario=None):
-        self._codigo = codigo
-        self._fechainicio = fechainicio
-        self._costomensual = costomensual
-        self._inmueble=inmueble
-        self._propietario=propietario
+from Contrato import Contrato
+class Arriendo(Contrato):
+    def __init__(self, codigo, fechainicio,fechafin, valor, inmueble, propietario, agencia, arrendatario=None):
+        super().__init__(codigo,fechainicio,valor,propietario,inmueble)
         self._arrendatario=arrendatario
+        self._agencia=agencia
+        self._fechafin=fechafin
 
-    def getFechainicio(self):
-        return self._fechainicio
-
-    def setFechainicio(self, fe):
-        self._fechainicio = fe
-
-    def getCostomensual(self):
-        return self._costomensual
-
-    def setCostomensual(self, co):
-        self._costomensual = co
-        
-    def getPropietario(self):
-        return self._propietario
-
-    def setPropietario(self,propietario):
-        self._propietario=propietario
 
     def getArrendatario(self):
         return self._arrendatario
 
     def setArrendatario(self,arrendatario):
         self._arrendatario=arrendatario
-
-    def getInmbueble(self):
-        return self._inmueble
-    def setInmueble(self, inmueble):
-        return self._inmueble
         
-    def toString(self):
-        printer = "{"+"codigo: "+str(self._codigo)+", fecha inicio: "+str(self._fechainicio)+", costo mensual: "+str(self._costomensual)+", fechafin: "+str(self._fechafin)+", inmueble: "+str(self._inmueble.toString())+", propietario: "+str(self._propietario)+", arrendatario: "+str(self._arrendatario)+" }"
+    def __str__(self):
+        printer = "{"+"codigo: "+str(self._codigo)+", fecha inicio: "+str(self._fechainicio)+", costo mensual: "+str(self._valor)+", fechafin: "+str(self._fechafin)+", inmueble: "+str(self._inmueble.toString())+", propietario: "+str(self._propietario)+", arrendatario: "+str(self._arrendatario)+" }"
         return printer
-        
-    @staticmethod
-    def arriendoMasBajo(arriendos):
-        menor=arriendos[0]
-        for arriendo in arriendos:
-            if arriendo.getCostomensual<menor.getCostomensual:
-                menor=arriendo
-        return menor
-
-    @staticmethod
-    def arriendoMasAlto(arriendos):
-        mayor=arriendos[0]
-        for arriendo in arriendos:
-            if arriendo.getCostomensual>mayor.getCostomensual:
-                mayor=arriendo
-        return mayor
     
     @staticmethod
     def mostrarArriendos(arriendos):
