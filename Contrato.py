@@ -50,4 +50,7 @@ class Contrato:
                 mayor=Contrato
         return mayor
     
-    
+    @staticmethod
+    def mostrarValorContrato(arriendos):
+        for contrato in arriendos:
+            print(contrato.toString())
