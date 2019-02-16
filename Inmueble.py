@@ -17,7 +17,7 @@ class Inmueble:
         self._antiguedad=antiguedad   
 
     def __str__(self):
-        printer = "Inmueble: {"+"estrato: "+str(self._estrato)+", direccion: "+str(self._direccion)+", vigilancia: "+str(self._vigilancia)+", servicios: "+str(self._servicios)+", ascensor: "+str(self._ascensor)+", area: "+str(self._area)+", baños: "+str(self._banos)+", cuartos: "+str(self._cuartos)+", tipo: "+str(self._tipo)+" }"
+        printer = "Inmueble: {"+"estrato: "+str(self._estrato)+", direccion: "+str(self._direccion)+", vigilancia: "+str(self._vigilancia)+", ascensor: "+str(self._ascensor)+", area: "+str(self._area)+", baños: "+str(self._banos)+", cuartos: "+str(self._cuartos)+", tipo: "+str(self._tipo)+" }"
         return printer
     
     def getEstrato(self):
@@ -103,3 +103,8 @@ class Inmueble:
             if(inmuebles.getTipo() == "enVenta"):
                 listaArriendo.append(inmuebles.toString())
         return listaArriendo
+
+    @staticmethod
+    def verListaInmuebles(lista):
+        for inmueble in lista:
+            print(inmueble.__str__())
