@@ -50,3 +50,4 @@ class Contrato:
                 mayor=Contrato
         return mayor
     
+    
