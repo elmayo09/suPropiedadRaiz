@@ -1,10 +1,16 @@
 class Contrato:
     def __init__(self, codigo, fecha, valor, propietario, inmueble):
-        self._codigo = codigo
+        self._coido = codigo
         self._fecha = fecha
         self._valor = valor
         self._propietario = propietario
         self._inmueble = inmueble
+
+    def getCodigo(self):
+        return self._coido
+
+    def setCodigo(self, codigo):
+        self._coido = codigo
 
     def getFecha(self):
         return self._fecha
@@ -15,7 +21,7 @@ class Contrato:
     def getValor(self):
         return self._valor
 
-    def setVAlor(self, co):
+    def setVAlor(self, val):
         self._valor = val
         
     def getPropietario(self):
@@ -54,3 +60,4 @@ class Contrato:
     def mostrarValorContrato(arriendos):
         for contrato in arriendos:
             print(contrato.toString())
+    
