@@ -17,7 +17,7 @@ class Inmueble:
         self._antiguedad=antiguedad   
 
     def __str__(self):
-        printer = "{"+"estrato: "+str(self._estrato)+", direccion: "+str(self._direccion)+", vigilancia: "+str(self._vigilancia)+", servicios: "+str(self._servicios)+", ascensor: "+str(self._ascensor)+", area: "+str(self._area)+", baños: "+str(self._banos)+", cuartos: "+str(self._cuartos)+", tipo: "+str(self._tipo)+", compraventa: "+str(self._compraventa)+" }"
+        printer = "Inmueble: {"+"estrato: "+str(self._estrato)+", direccion: "+str(self._direccion)+", vigilancia: "+str(self._vigilancia)+", servicios: "+str(self._servicios)+", ascensor: "+str(self._ascensor)+", area: "+str(self._area)+", baños: "+str(self._banos)+", cuartos: "+str(self._cuartos)+", tipo: "+str(self._tipo)+" }"
         return printer
     
     def getEstrato(self):
