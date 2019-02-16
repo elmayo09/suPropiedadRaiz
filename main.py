@@ -4,6 +4,7 @@ from Cliente import Cliente
 from Compraventa import Compraventa
 from Inmueble import Inmueble
 from Propietario import Propietario
+from Ficticios import Ficticios
 from mensaje import Mensaje as msg
 from random import *
 
@@ -57,7 +58,7 @@ def agregarDatosFicticios():
         lista_propietarios.append(c)
         cc=cc+1
 
-
+Ficticios.datos_desde_txt("ficticios.txt",lista_clientes) #agrega clientes ficticios desde txt
 #comienza el programa
 print(msg.title)
 print(msg.bienv)
