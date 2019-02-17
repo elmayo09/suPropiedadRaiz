@@ -84,7 +84,7 @@ class Inmueble:
             print("No se puede arendar,ya esta en venta")
 
     def getCompraventa(self):
-        return self._compraventaS
+        return self._compraventa
 
     def setCompraventa(self, compraventa):
         if self._compraventa==None:
