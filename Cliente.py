@@ -35,6 +35,8 @@ class Cliente:
         self._correo=correo
     def addContrato(self, contrato):
         self._contratos.append(contrato)
+    def getContratos(self):
+        return self._contratos
     @staticmethod
     def mostrarClientes(lista):
         for u in lista:
