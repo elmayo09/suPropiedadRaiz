@@ -21,4 +21,4 @@ class Arriendo(Contrato):
     @staticmethod
     def mostrarArriendos(arriendos):
         for arriendo in arriendos:
-            print(arriendo.toString())
+            print(arriendo.__str__())
