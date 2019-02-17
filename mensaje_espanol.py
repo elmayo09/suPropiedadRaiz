@@ -17,9 +17,10 @@ class Mensaje:
     seleccion = "----------------------------------------------------\n Ingrese el numero de una de las siguientes opciones: \n"
     menu_propietario = " 1. Registrar contrato. \n 2. Ver lista de inmuebles. \n 0. Regresar al menu principal. \n " 
 
-    menu_cliente = " 1. Ver ofertas de arrendamiento. \n 2. Ver ofertas de compraventa. \n 0. Regresar al menu principal"
+    menu_cliente = " 1. Ver ofertas de arrendamiento. \n 2. Ver ofertas de compraventa.\n 3. Seleccionar compraventa \n 0. Regresar al menu principal"
     arriendos_disp = "Los arrendamientos disponibles son: \n"
     compraventas_disp = "Las compraventas disponibles son: \n"
+    sel_compraventa = "Ingrese el codigo de la compraventa: \n"
 
     in_nombre = "Ingrese el nombre: "
     in_cedula = "Ingrese la cédula: "
