@@ -15,7 +15,7 @@ class Arriendo(Contrato):
         self._arrendatario=arrendatario
         
     def __str__(self):
-        printer = "{"+"codigo: "+str(self._codigo)+", fecha inicio: "+str(self._fecha)+", costo mensual: "+str(self._valor)+", fechafin: "+str(self._fechafin)+", inmueble: "+str(self._inmueble.__str__())+", propietario: "+str(self._propietario.__str__())+", arrendatario: "+str(self._arrendatario.__str__())+", agencia: "+str(self._agencia)+" }"
+        printer = "Arriendo: {"+"codigo: "+str(self._codigo)+", fecha inicio: "+str(self._fecha)+", costo mensual: "+str(self._valor)+", fechafin: "+str(self._fechafin)+", inmueble: "+str(self._inmueble.__str__())+", propietario: "+str(self._propietario.__str__())+", arrendatario: "+str(self._arrendatario.__str__())+", agencia: "+str(self._agencia)+" }"
         return printer
     
     @staticmethod
@@ -34,6 +34,6 @@ class Arriendo(Contrato):
     @staticmethod
     def buscarArriendo(arriendos, codigo):
         for arriendo in arriendos:
-            if carriendo.getCodigo()==codigo:
+            if arriendo.getCodigo()==codigo:
                 return arriendo
         return None
