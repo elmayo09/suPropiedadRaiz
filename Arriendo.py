@@ -22,3 +22,18 @@ class Arriendo(Contrato):
     def mostrarArriendos(arriendos):
         for arriendo in arriendos:
             print(arriendo.__str__())
+
+    #Metodo para buscar arriendos disponibles
+    @staticmethod
+    def arriendosDisponibles(arriendos):
+        for arriendo in arriendos:
+            if arriendo.getDisponible():
+                print(arriendo.__str__())
+
+    #Buscar arriendos por codigo
+    @staticmethod
+    def buscarArriendo(arriendos, codigo):
+        for arriendo in arriendos:
+            if carriendo.getCodigo()==codigo:
+                return arriendo
+        return None
