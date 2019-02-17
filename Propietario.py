@@ -8,7 +8,7 @@ class Propietario:
         self._inmuebles=[]
 
     def __str__(self):
-        printer = "Propietario: { Nombre: "+self._nombre+",Direccion: "+self._direccion+", Correo"+self._correo+", Cedula: "+str(self._cedula)+" }"
+        printer = "{ Nombre: "+self._nombre+",Direccion: "+self._direccion+", Correo"+self._correo+", Cedula: "+str(self._cedula)+" }"
         return printer
     
     def getNombre(self):
