@@ -40,7 +40,7 @@ class Contrato:
     def getDisponible(self):
         return self._disponible
 
-    def setDisponible(self, inmueble):
+    def setDisponible(self, disponible):
         self._disponible = disponible
 
     def __str__(self):
