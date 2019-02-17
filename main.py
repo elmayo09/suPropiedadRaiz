@@ -5,7 +5,7 @@ from Compraventa import Compraventa
 from Inmueble import Inmueble
 from Propietario import Propietario
 from Ficticios import Ficticios
-from mensaje import Mensaje as msg
+from mensaje_espanol import Mensaje as msg
 from random import *
 
 codigos_unicos = 1000 #main
@@ -68,43 +68,48 @@ def agregarDatosFicticios():
 #comienza el programa
 print(msg.title)
 print(msg.bienv)
-idioma = 0 #idioma = 1 para ingles, idioma = 2 para español
+idioma = 0 #idioma = 1 para ingles, idioma = 2 para espanol
 while(True):
     print(msg.en_es)
     idioma = int(input())
-    if(idioma == 1 or idioma == 2):
+    if(idioma == 1): #selecciona ingles
+        from mensaje_ingles import Mensaje as msg
         break
-    else:
-        print(msg.err[1]+" / "+msg.err[2])
-idioma = str(idioma)
+    elif(idioma ==2): #ya esta por default en espanol
+        break
+    else: #opcion incorrecta
+        print(msg.err)
+
 opcion1 = -1 #opcion1 = opciones del menu principal
 
 while(True):
-    print(msg.menu_principal[idioma])
+    print(msg.seleccion)
+    print(msg.menu_principal)
     opcion1 = int(input())
     
     if(opcion1 == 0): #Salir del programa
-        print(msg.gracias[idioma]) 
+        print(msg.gracias) 
         break
     
     elif(opcion1 == 1):#primera opcion agregar datos ficticios
         agregarDatosFicticios()
         Ficticios.datos_desde_txt("ficticios.txt",lista_clientes) #agrega clientes ficticios desde txt
-        print(msg.datosFicticios[idioma])
+        print(msg.datosFicticios)
         
     elif(opcion1 == 2): #segunda opcion menu principal #ingreso propietario
-        print("Ingresar cedula:")
+        print(msg.ingreso)
+        print(msg.in_cedula)
         ced = int(input())
-        print(msg.ingreso_contra[idioma])
+        print(msg.in_contrasena)
         contra = str(input())
 
         logeado = Propietario.login(ced, contra, lista_propietarios)
         if(logeado != None):
-            print(msg.bienv_fun[idioma]+logeado.getNombre()) #Ingreso exitoso como propietario
+            print(msg.bienv_usuario+logeado.getNombre()) #Ingreso exitoso como propietario
 
             opcion2 = -1  #opcion2 = opciones del menu funcionario
             while(True):  # Ingreso al menu funcionario
-                print(msg.menu_funcionario[idioma])
+                print(msg.menu_propietario)
                 opcion2 = int(input())
 
                 if(opcion2 == 0): #Salir del menu funcionario
@@ -194,79 +199,79 @@ while(True):
                     
 
         else:
-            print(msg.err_datos[idioma]) #Datos erroneos funcionario
+            print(msg.err_datos) #Datos erroneos funcionario
                 
     elif(opcion1 == 3): #opcion 3 menu principal registrtar cliente
-        print("Para registrarse como cliente, por favor digite los siguientes datos: ")
-        print("Ingrese su cedula: ")
+        print(msg.registro)
+        print(msg.in_cedula)
         cedula_cliente = int(input())
         encontrado = False
         for client in lista_clientes:
             if (client.getCedula() == cedula_cliente): #encuentra un cliente con esa cedula
-                print("Ya existe un cliente con esa cedula")
+                print(msg.existe)
                 encontrado = True
                 break
         if(encontrado == False):  #No hay un cliente con esa cedula
-            print("Ingrese su nombre: ")
+            print(msg.in_nombre)
             nombre_cliente = str(input())
-            print("Ingrese su contraseña: ")
+            print(msg.in_contrasena)
             contrasena_cliente = str(input())
-            print("Ingrese su direccion: ")
+            print(msg.in_direccion)
             direccion_cliente = str(input())
             
 
             while(True):  #Correo opcional
-                print("Desea agregar correo para contacto? :\n1. Si\n2. No")
+                print(msg.opcional_correo)
                 opcion_correo = int(input())
 
                 if(opcion_correo == 1):  #Pide correo y registra cliente con correo
-                    print("Ingrese su correo: ")
+                    print(msg.in_correo)
                     correo_cliente = str(input())
                     cliente_nuevo = Cliente(cedula_cliente, nombre_cliente, contrasena_cliente, direccion_cliente, correo_cliente)
                     lista_clientes.append(cliente_nuevo)
-                    print("Cliente registrado correctamente: \n"+cliente_nuevo.__str__())
+                    print(msg.regd+cliente_nuevo.__str__())
                     break
 
                 elif(opcion_correo == 2): #Registra cliente sin correo
                     cliente_nuevo = Cliente(cedula_cliente, nombre_cliente, contrasena_cliente, direccion_cliente)
                     lista_clientes.append(cliente_nuevo)
-                    print("Cliente registrado correctamente: \n"+cliente_nuevo.__str__())
+                    print(msg.regd+cliente_nuevo.__str__())
                     break
 
                 else: #No ingresa 1 o 2
-                    print("No es una opcion valida")
+                    print(msg.err)
 
     elif(opcion1 == 4):  #opciop 4 del menu principal Ingreso Como Cliente
-        print("Para ingresar como cliente, por favor digite los siguientes datos: ")
+        print(msg.ingreso)
 
-        print(msg.in_cedula[idioma])
+        print(msg.in_cedula)
         ced = int(input())
-        print(msg.in_contrasena[idioma])
+        print(msg.in_contrasena)
         contra = str(input())
 
-        logeado = Usuario.login(ced, contra, lista_clientes)
+        logeado = Cliente.login(ced, contra, lista_clientes)
         if(logeado != None):
-            print(msg.bienv_fun[idioma]+logeado.getNombre()) #Ingreso exitoso como cliente
+            print(msg.bienv_usuario+logeado.getNombre()) #Ingreso exitoso como cliente
 
             opciones_cliente = -1  #opcion2 = opciones del menu cliente
             while(True):  # Ingreso al menu cliente
-                print("Seleccione una de las siguientes opciones: ")
-                print(" 1. Ver ofertas de arrendamiento. \n 2. Ver ofertas de compraventa. \n 0. Regresar al menú principal")
+                print(msg.seleccion)
+                print(msg.menu_cliente)
                 opciones_cliente = int(input())
 
                 if(opciones_cliente == 0): #Salir del menu cliente
                     break
 
                 elif(opciones_cliente == 1):  #Mostrar arriendos disponibles
-                    print("Los arrendamientos disponibles son: ")
+                    print(msg.arriendos_disp)
                     Arriendo.mostrarArriendos(lista_arriendos)
                 
                 elif(opciones_cliente == 2):  #Mostrar compraventas disponibles
-                    print("Las compraventas disponibles son: ")
+                    print(msg.compraventas_disp)
                     Compraventa.mostrarCompraventas(lista_compraventas)
             
         else:
-            print(msg.err_datos[idioma]) #Datos erroneos cliente
+            print(msg.err_datos) #Datos erroneos cliente
             
     elif(opcion1 == 5): #Opcion 5 del menu principal
-        print(msg.err[idioma])
+        print(msg.err)
