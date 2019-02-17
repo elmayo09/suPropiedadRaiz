@@ -15,7 +15,7 @@ class Mensaje:
     bienv_usuario = "Welcome, "
     datosFicticios= "Fake data added succefully."
     seleccion = "----------------------------------------------------\n Enter the number of one of the following options: \n"
-    menu_propietario = " 1. Register contract. \n 2. See best paying functionary. \n 3. See list of functionaries. \n 0. Return to main menu. \n "
+    menu_propietario = " 1. Register contract. \n 2. See list of properties. \n 0. Return to main menu. \n "
 
     menu_cliente = " 1. See rent offers. \n 2. See sales offers. \n 0. Return to main menu"
     arriendos_disp = "The available rent offers are: \n"

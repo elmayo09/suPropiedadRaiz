@@ -15,9 +15,9 @@ class Mensaje:
     bienv_usuario = "Bienvenido, "
     datosFicticios= "Datos ficticios agregados correctamente."
     seleccion = "----------------------------------------------------\n Ingrese el numero de una de las siguientes opciones: \n"
-    menu_propietario = " 1. Registrar contrato. \n 2. Ver funcionario con mayor sueldo. \n 3. Ver listado de funcionarios. \n 4. Registrar nueva compraventa o arriendo. \n 0. Regresar al menú principal. \n " 
+    menu_propietario = " 1. Registrar contrato. \n 2. Ver lista de inmuebles. \n 0. Regresar al menu principal. \n " 
 
-    menu_cliente = " 1. Ver ofertas de arrendamiento. \n 2. Ver ofertas de compraventa. \n 0. Regresar al menú principal"
+    menu_cliente = " 1. Ver ofertas de arrendamiento. \n 2. Ver ofertas de compraventa. \n 0. Regresar al menu principal"
     arriendos_disp = "Los arrendamientos disponibles son: \n"
     compraventas_disp = "Las compraventas disponibles son: \n"
 
