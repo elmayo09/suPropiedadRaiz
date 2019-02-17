@@ -4,7 +4,7 @@ class Mensaje:
     bienv = "*Welcome, select the language / Bienvenido, seleccione el idioma:*"
     gracias = "Gracias por visitarnos."
     en_es = "1. English. \n2. Español"
-    err = "Wrong option, try again / Opcion incorrecta, intente de nuevo"
+    err = "Opcion incorrecta, intente de nuevo"
 
     menu_principal = "1. Agregar datos ficticios.\n2. Ingresar como propietario.\n3. Registrar cliente.\n4. Ingresar cliente.\n0. Salir.\n"
     ingreso = "Para entrar, ingrese los siguientes datos:\n"
@@ -15,7 +15,7 @@ class Mensaje:
     bienv_usuario = "Bienvenido, "
     datosFicticios= "Datos ficticios agregados correctamente."
     seleccion = "----------------------------------------------------\n Ingrese el numero de una de las siguientes opciones: \n"
-    menu_propietario = " 1. Registrar contrato. \n 2. Ver lista de inmuebles. \n 0. Regresar al menu principal. \n " 
+    menu_propietario = " 1. Registrar inmueble. \n 2. Ver lista de inmuebles. \n 0. Regresar al menu principal. \n " 
 
     menu_cliente = " 1. Ver ofertas de arrendamiento. \n 2. Ver ofertas de compraventa.\n 3. Seleccionar compraventa \n 4. Seleccionar arriendo \n 5. Mostrar mis contratos \n 0. Regresar al menu principal"
     arriendos_disp = "Los arrendamientos disponibles son: \n"
