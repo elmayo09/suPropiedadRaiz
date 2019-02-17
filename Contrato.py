@@ -1,10 +1,11 @@
 class Contrato:
-    def __init__(self, codigo, fecha, valor, propietario, inmueble):
+    def __init__(self, codigo, fecha, valor, propietario, inmueble,disponible=True):
         self._codigo = codigo
         self._fecha = fecha#fecha de pubicacion del contrato
         self._valor = valor
         self._propietario = propietario
         self._inmueble = inmueble
+        self._disponible = disponible
 
     def getCodigo(self):
         return self._codigo
@@ -35,6 +36,12 @@ class Contrato:
 
     def setInmueble(self, inmueble):
         self._inmueble = inmueble
+
+    def getDisponible(self):
+        return self._disponible
+
+    def setDisponible(self, inmueble):
+        self._disponible = disponible
 
     def __str__(self):
         printer = "{"+"codigo: "+str(self._codigo)+", fecha: "+str(self._fecha)+", valor: "+str(self._valor)+", inmueble: "+str(self._inmueble.__str__())+", propietario: "+str(self._propietario.__str__)+" }"
