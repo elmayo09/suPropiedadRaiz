@@ -25,4 +25,4 @@ class Compraventa(Contrato):
     @staticmethod
     def mostrarCompraventas(compraventas):
         for compraventa in compraventas:
-            print(compraventa.toString())
+            print(compraventa.__str__())
