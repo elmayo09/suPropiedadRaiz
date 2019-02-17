@@ -4,7 +4,7 @@ class Mensaje:
     bienv = "*Welcome, select the language:*"
     gracias = "Thanks for your visit."
     en_es = "English"
-    err = "Wrong option, try again / Opcion incorrecta, intente de nuevo"
+    err = "Wrong option, try again "
 
     menu_principal = " 1. Add fake data.\n 2. Log In as owner. \n 3. Sign In as Costumer. \n 4. Log In as Costumer. \n 0. Exit. \n "
     ingreso = "For Log In , enter the following data:\n"
