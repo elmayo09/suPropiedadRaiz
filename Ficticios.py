@@ -52,7 +52,7 @@ class Ficticios:
 		valoresPassword = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ<=>@#%&+"
 		nombres=["Andres Gimenez","Maria Taja","Lina Gutierrez","Juan Sarrias","Carlos inut","Pepe Grillo","Sara Macias","Eduardo Mejia","Yeremi Guarin","Martina Tamayo",
     		"Martin Correa","Cristina Mejia", "Emanuel Valencia", "Cristopher Amaya","Jose Mercado","Josue Galindo","Natalia Osorio","Edgar Aguirre","Emilio del monte","Miranda Rodas"]
-		codigo_contrato=1000
+		codigo_contrato=100
 		primer_propietario = Propietario(1234, "admin", "1234", "car40A12", "abc@sp.com")
 		lista_propietarios.append(primer_propietario)
 		inmu=Inmueble(0,"car."+str(randint(160,250)),False,True,randint(300,500),3,1,"enArriendo",9,"Medellin",primer_propietario)#Creacion de inmueble
