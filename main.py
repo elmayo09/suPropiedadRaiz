@@ -17,7 +17,7 @@ lista_compraventas = []
 lista_arriendos= []
 lista_compraventas=[]
 lista_inmuebles=[]
-
+codigo_contrato=1000
 
 
 #comienza el programa
@@ -123,6 +123,7 @@ while(True):
                                 agencia=True
                             else: agencia=False
                             arrie=Arriendo(codigo_contrato,fechainicio,fechafin,valor,inmu,logeado,agencia)#Creacion de contrato de arriendo enlazado a propietario e inmueble
+                            inmu.addArriendo(arrie)#enlace inmueble con arriendo
                             lista_inmuebles.append(inmu)
                             lista_arriendos.append(arrie)
                         else:
@@ -139,12 +140,10 @@ while(True):
                             inmu.setCompraventa(compraV)#enlace inmueble con la compraventa
                             lista_inmuebles.append(inmu)
                             lista_compraventas.append(compraV)
+                        print("inmueble registrado")
 
                 elif(opcion2 == 2):  #Ver los inmuebles del propietario actual
                     Inmueble.verListaInmuebles(logeado.getInmuebles())
-
-  
-                        
 
                 elif(opcion2 == 6): #opcion 6 menu propietario Aprobar compraventas
                     print("aprobar compraventas")
@@ -242,6 +241,7 @@ while(True):
                             compraventa_actual.setDisponible(False)
                             compraventa_actual.setComprador(logeado)#enlace entre compraventa y el comprador
                             logeado.addContrato(compraventa_actual)
+                            compraventa_actual.getInmueble().setTipo("Vendido")
                             print("aplico")
                         else:
                             print("No aplico a la compraventa de cogigo: "+str(compraventa_actual.getCodigo()))
@@ -260,6 +260,7 @@ while(True):
                             arriendo_actual.setDisponible(False)
                             arriendo_actual.setArrendatario(logeado)#enlace entre arriendo y el arrendatario
                             logeado.addContrato(arriendo_actual)#se añade el contrato de arrendamieno a la lista de contratos del cliente
+                            arriendo_actual.getInmueble().setTipo("arrendado")
                             print("Aplico")
                         else:
                             print("No aplico al arriendo de codigo "+str(arriendo_actual.getCodigo()))
@@ -269,5 +270,108 @@ while(True):
         else:
             print(msg.err_datos) #Datos erroneos cliente
             
-    elif(opcion1 == 5): #Opcion 5 del menu principal
+    elif(opcion1 == 5): #Opcion 5 del menu principal registrar nuevo propietario
+        print(msg.registro)
+        print(msg.in_cedula)
+        cedula_propietario = int(input())
+        encontrado = False
+        for prop in lista_propietarios:
+            if (prop.getCedula() == cedula_propietario): #encuentra un propietario con esa cedula
+                print(msg.existe)
+                encontrado = True
+                break
+        if(encontrado == False):  #No hay un propietario con esa cedula
+            print(msg.in_nombre)
+            nombre_propietario = str(input())
+            print(msg.in_contrasena)
+            contrasena_propietario = str(input())
+            print(msg.in_direccion)
+            direccion_propietario = str(input())
+            while(True):  #Correo opcional
+                print(msg.opcional_correo)
+                opcion_correo = int(input())
+
+                if(opcion_correo == 1):  #Pide correo y registra propietario con correo
+                    print(msg.in_correo)
+                    correo_propietario = str(input())
+                    break
+
+                elif(opcion_correo == 2): #Registra cliente sin correo
+                    correo_propietario = "No"
+                    break
+
+                else: #No ingresa 1 o 2
+                    print(msg.err)
+            print("Debe registrar un inmueble")
+            print("Estrato:")
+            estrato = str(input())
+            print("Direccion")
+            direccion = str(input())
+            for inmueble in lista_inmuebles:  #busca la direccion entre los inmuebles existentes
+                if(inmueble.getDireccion() == direccion):
+                    print("El inmueble ya existe")
+                    direccion=0
+                    break
+            if direccion!=0:
+                logeado=Propietario(cedula_propietario,nombre_propietario,contrasena_propietario,direccion,correo_propietario)
+                lista_propietarios.append(logeado)
+                print("Tiene vigilancia?(s|n):")
+                vigilancia = str(input())
+                if vigilancia=="s":
+                    vigilancia=True
+                else: vigilancia=False
+                print("Tiene ascensor?(s|n):")
+                ascensor = str(input())
+                if ascensor=="s":
+                    ascensor=True
+                else: ascensor=False
+                print("Area en metros cuadrados:")
+                area = int(input())
+                print("Cantidad de cuartos:")
+                cuartos = int(input())
+                print("Cantidad de baños:")
+                banos = int(input())
+                print("para arriendo o compraventa:")
+                tipo = str(input())
+                print("Años de antiguedad del inmueble:")
+                antiguedad = int(input())
+                print("Ciudad donde esta ubicado de inmueble:")
+                ciudad = str(input())
+                inmu=Inmueble(estrato,direccion,vigilancia,ascensor,area,cuartos,banos,tipo,antiguedad,ciudad,logeado)#Creacion de inmueble
+                logeado.addInmueble(inmu)#enlace propietario con inmueble
+                if tipo=="arriendo":
+                    #creacion arriendo
+                    print("Creacion de contrato de arriendo")
+                    codigo_contrato+=1
+                    print("Fecha donde inicia arriendo(dd/mm/aaaa):")
+                    fechainicio = str(input())
+                    print("Fecha donde finaliza el arriendo(dd/mm/aaaa):")
+                    fechafin = str(input())
+                    print("Valor de la mensulidad:")
+                    valor = int(input())
+                    print("Estara por medio de Agencia?(s|n)")
+                    agencia = str(input())
+                    if agencia=="s":
+                        agencia=True
+                    else: agencia=False
+                    arrie=Arriendo(codigo_contrato,fechainicio,fechafin,valor,inmu,logeado,agencia)#Creacion de contrato de arriendo enlazado a propietario e inmueble
+                    inmu.addArriendo(arrie)#enlace inmueble con arriendo
+                    lista_inmuebles.append(inmu)
+                    lista_arriendos.append(arrie)                    
+                else:
+                    #Creacion compraventa
+                    print("Creacion de contrato de compra-venta")
+                    codigo_contrato+=1
+                    print("Fecha (dd/mm/aaaa):")
+                    fecha = str(input())
+                    print("Valor de la mensulidad:")
+                    valor = int(input())
+                    print("Medio de pago:")
+                    medioPago = str(input())
+                    compraV=Compraventa(codigo_contrato,logeado,fecha,valor,inmu,medioPago)#Creacion de contrato de compraventa enlazado a propietario e inmueble
+                    inmu.setCompraventa(compraV)#enlace inmueble con la compraventa
+                    lista_inmuebles.append(inmu)
+                    lista_compraventas.append(compraV)
+                print(msg.regd)
+    else:
         print(msg.err)
