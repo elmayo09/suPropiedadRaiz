@@ -1,9 +1,8 @@
 class Contrato:
-    def __init__(self, codigo, fecha, valor, propietario, inmueble,disponible=True):
+    def __init__(self, codigo, fecha, valor, inmueble,disponible=True):
         self._codigo = codigo
         self._fecha = fecha#fecha de pubicacion del contrato
         self._valor = valor
-        self._propietario = propietario
         self._inmueble = inmueble
         self._disponible = disponible
 
@@ -24,12 +23,6 @@ class Contrato:
 
     def setValor(self, val):
         self._valor = val
-        
-    def getPropietario(self):
-        return self._propietario
-
-    def setPropietario(self,propietario):
-        self._propietario = propietario
 
     def getInmueble(self):
         return self._inmueble
