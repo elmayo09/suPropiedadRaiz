@@ -122,7 +122,7 @@ while(True):
                             if agencia=="s":
                                 agencia=True
                             else: agencia=False
-                            arrie=Arriendo(codigo_contrato,fechainicio,fechafin,valor,inmu,logeado,agencia)#Creacion de contrato de arriendo enlazado a propietario e inmueble
+                            arrie=Arriendo(codigo_contrato,fechainicio,fechafin,valor,inmu,agencia)#Creacion de contrato de arriendo enlazado a propietario e inmueble
                             inmu.addArriendo(arrie)#enlace inmueble con arriendo
                             lista_inmuebles.append(inmu)
                             lista_arriendos.append(arrie)
@@ -136,7 +136,7 @@ while(True):
                             valor = int(input())
                             print("Medio de pago:")
                             medioPago = str(input())
-                            compraV=Compraventa(codigo_contrato,logeado,fecha,valor,inmu,medioPago)#Creacion de contrato de compraventa enlazado a propietario e inmueble
+                            compraV=Compraventa(codigo_contrato,fecha,valor,inmu,medioPago)#Creacion de contrato de compraventa enlazado a propietario e inmueble
                             inmu.setCompraventa(compraV)#enlace inmueble con la compraventa
                             lista_inmuebles.append(inmu)
                             lista_compraventas.append(compraV)
