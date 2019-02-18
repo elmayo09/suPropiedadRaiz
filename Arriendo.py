@@ -1,8 +1,8 @@
 
 from Contrato import Contrato
 class Arriendo(Contrato):
-    def __init__(self, codigo, fechainicio,fechafin, valor, inmueble, propietario, agencia, arrendatario=None):
-        super().__init__(codigo,fechainicio,valor,propietario,inmueble)
+    def __init__(self, codigo, fechainicio,fechafin, valor, inmueble, agencia, arrendatario=None):
+        super().__init__(codigo,fechainicio,valor,inmueble)
         self._arrendatario=arrendatario
         self._agencia=agencia
         self._fechafin=fechafin
