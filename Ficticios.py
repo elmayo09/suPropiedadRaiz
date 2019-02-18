@@ -56,7 +56,7 @@ class Ficticios:
 		primer_propietario = Propietario(1234, "admin", "1234", "car40A12", "abc@sp.com")
 		lista_propietarios.append(primer_propietario)
 		inmu=Inmueble(0,"car."+str(randint(160,250)),False,True,randint(300,500),3,1,"enArriendo",9,"Medellin",primer_propietario)#Creacion de inmueble
-		arrie=Arriendo(0,"20-11-1900","21-12-1990",randint(1000,150000),inmu,primer_propietario,False)#Creacion de contrato de arriendo enlazado a propietario e inmueble
+		arrie=Arriendo(1,"20-11-1900","21-12-1990",randint(1000,150000),inmu,False)#Creacion de contrato de arriendo enlazado a propietario e inmueble
 		inmu.addArriendo(arrie)#enlace inmueble con arriendo
 		primer_propietario.addInmueble(inmu)
 		lista_arriendos.append(arrie)
@@ -73,7 +73,7 @@ class Ficticios:
 			c=Propietario(cc,nombres[cc],p, "car."+str(randint(60,150)))#Creacion de propietario
 			inmu=Inmueble(cc+1,"car."+str(randint(160,250)),False,True,randint(300,500),3,1,"enArriendo",9,"Medellin",c)#Creacion de inmueble
 			c.addInmueble(inmu)#enlace propietario con inmueble
-			arrie=Arriendo(cc,"20-11-1990","21-12-1992",randint(1000,150000),inmu,c,False)#Creacion de contrato de arriendo enlazado a propietario e inmueble
+			arrie=Arriendo(cc,"20-11-2000","21-12-2012",randint(1000,150000),inmu,False)#Creacion de contrato de arriendo enlazado a propietario e inmueble
 			inmu.addArriendo(arrie)#enlace inmueble con arriendo
 			lista_inmuebles.append(inmu)
 			lista_arriendos.append(arrie)
@@ -88,7 +88,7 @@ class Ficticios:
 			c=Propietario(cc,nombres[cc],p, "car."+str(randint(60,150)))#Creacion de propietario
 			inmu=Inmueble(cc+1,"car."+str(randint(160,250)),False,True,randint(300,500),3,1,"enArriendo",9,"Medellin",c)#Creacion de inmueble
 			c.addInmueble(inmu)#enlace propietario con inmueble
-			compraV=Compraventa(cc,c,"20-11-1990",randint(1000,150000),inmu,"Efectivo")#Creacion de contrato de compraventa enlazado a propietario e inmueble
+			compraV=Compraventa(cc,"20-11-2010",randint(1000,150000),inmu,"Efectivo")#Creacion de contrato de compraventa enlazado a propietario e inmueble
 			inmu.setCompraventa(compraV)#enlace inmueble con la compraventa
 			lista_inmuebles.append(inmu)
 			lista_compraventas.append(compraV)
