@@ -1,7 +1,7 @@
 from Contrato import Contrato
 class Compraventa(Contrato):
-    def __init__(self, codigo, propietario, fecha, valor, inmueble, medioPago, comprador=None):
-        super().__init__(codigo,fecha,valor,propietario,inmueble)
+    def __init__(self, codigo, fecha, valor, inmueble, medioPago, comprador=None):
+        super().__init__(codigo,fecha,valor,inmueble)
         self._comprador=comprador
         self._medioPago=medioPago
 
