@@ -6,7 +6,7 @@ class Mensaje:
     en_es = "1. English. \n2. Español"
     err = "Opcion incorrecta, intente de nuevo"
 
-    menu_principal = "1. Agregar datos ficticios.\n2. Ingresar como propietario.\n3. Registrar cliente.\n4. Ingresar cliente.\n5. Registro nuevo propietario \n0. Salir.\n"
+    menu_principal = "1. Agregar datos ficticios.\n2. Ingresar como propietario.\n3. Registrar cliente.\n4. Ingresar cliente.\n5. Registro nuevo propietario \n6. Agregar datos ficticios desde txt(Clientes)\n0. Salir.\n"
     ingreso = "Para entrar, ingrese los siguientes datos:\n"
     registro = "Para registrarse, ingrese los siguientes datos:\n"
     err_datos = "Datos incorrectos, intente de nuevo"
