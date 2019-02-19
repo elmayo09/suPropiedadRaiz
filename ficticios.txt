@@ -1,0 +1,19 @@
+cedula: 1000778, nombre: Pepe Mujica, contrasena: asdfg, direccion: Calle 7#1, correo: pepe71@yimail.com.
+
+cedula: 2000778, nombre: Karla Karlz, contrasena: 1sdfg, direccion: Calle 7#1, correo: karla71@yimail.com.
+
+cedula: 3000778, nombre: Jessica Jones, contrasena: 2sdfg, direccion: Calle 7#2, correo: jess72@yimail.com.
+
+cedula: 4000778, nombre: Fernando Casas, contrasena: 3sdfg, direccion: Calle 7#3, correo: ferr73@yimail.com.
+
+cedula: 5000778, nombre: Monik Rodriguez, contrasena: 4sdfg, direccion: Calle 7#5, correo: mon75@yimail.com.
+
+cedula: 6000778, nombre: Sara Connor, contrasena: 5sdfg, direccion: Calle 7#8, correo: sconn78@yimail.com.
+
+cedula: 7000778, nombre: Madara Uchiha, contrasena: 6sdfg, direccion: Calle 7#13, correo: uchiha713@yimail.com.
+
+cedula: 8000778, nombre: Helen Hernandez, contrasena: 7sdfg, direccion: Calle 7#21, correo: heln721@yimail.com.
+
+cedula: 9000778, nombre: Milena Montano, contrasena: 8sdfg, direccion: Calle 7#34, correo: monta734@yimail.com.
+
+cedula: 1100778, nombre: Carl Johnson, contrasena: 9sdfg, direccion: Calle 7#55, correo: groove755@yimail.com.
