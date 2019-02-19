@@ -6,7 +6,7 @@ class Mensaje:
     en_es = "English"
     err = "Wrong option, try again "
 
-    menu_principal = " 1. Add fake data.\n 2. Log In as owner. \n 3. Sign In as Costumer. \n 4. Log In as Customer.\n 5. Register new owner \n6. Add fake data from txt (Customer)\n 0. Exit. \n "
+    menu_principal = " 1. Add fake data.\n 2. Log In as owner. \n 3. Sign In as Costumer. \n 4. Log In as Customer.\n 5. Register new owner \n 6. Add fake data from txt (Customer)\n 0. Exit. \n "
     ingreso = "For Log In , enter the following data:\n"
     registro = "For Sign In, enter the following data:\n"
     err_datos = "Wrong data, try again"
