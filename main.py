@@ -186,12 +186,18 @@ while(True):
                     cliente_nuevo = Cliente(cedula_cliente, nombre_cliente, contrasena_cliente, direccion_cliente, correo_cliente)
                     lista_clientes.append(cliente_nuevo)
                     print(msg.regd+cliente_nuevo.__str__())
+                    f = open('ficticios.txt','a')
+                    f.write('\n' + 'cedula: '+str(cedula_cliente)+', nombre: '+nombre_cliente+', contrasena: '+contrasena_cliente+', direccion: '+direccion_cliente+', correo: '+correo_cliente+'.')
+                    f.close()
                     break
 
                 elif(opcion_correo == 2): #Registra cliente sin correo
                     cliente_nuevo = Cliente(cedula_cliente, nombre_cliente, contrasena_cliente, direccion_cliente)
                     lista_clientes.append(cliente_nuevo)
                     print(msg.regd+cliente_nuevo.__str__())
+                    f = open('ficticios.txt','a')
+                    f.write('\n\n' + 'cedula: '+str(cedula_cliente)+', nombre: '+nombre_cliente+', contrasena: '+contrasena_cliente+', direccion: '+direccion_cliente+', correo: No.')
+                    f.close()
                     break
 
                 else: #No ingresa 1 o 2
@@ -374,9 +380,10 @@ while(True):
                 print(msg.regd)
     
     #--------------------------------------------------------------------------------------
-    elif(opcion1 == 6):
+    elif(opcion1 == 6):#Opcion 6 del menu principal datos ficticios de clientes desde txt
         Ficticios.datos_desde_txt("ficticios.txt",lista_clientes) #agrega clientes ficticios desde txt
         print(msg.datosFicticios)
+        Cliente.mostrarClientes(lista_clientes)
     #---------------------------------------------------------------------------------------
     else:
         print(msg.err)
