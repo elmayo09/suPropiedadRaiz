@@ -40,7 +40,7 @@ class Cliente:
     @staticmethod
     def mostrarClientes(lista):
         for u in lista:
-            print(u.toString())
+            print(u.__str__())
     @staticmethod
     def login(ced, contra, lista):
         for x in lista:
