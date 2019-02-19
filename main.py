@@ -48,7 +48,6 @@ while(True):
     #----------------------------------------------------------------------------
     elif(opcion1 == 1):#primera opcion agregar datos ficticios
         #agregarDatosFicticios()
-        Ficticios.datos_desde_txt("ficticios.txt",lista_clientes) #agrega clientes ficticios desde txt
         Ficticios.agregarDatosFicticios(lista_clientes,lista_propietarios,lista_compraventas,lista_inmuebles,lista_arriendos)
         print(msg.datosFicticios)
     #----------------------------------------------------------------------------
@@ -373,5 +372,11 @@ while(True):
                     lista_inmuebles.append(inmu)
                     lista_compraventas.append(compraV)
                 print(msg.regd)
+    
+    #--------------------------------------------------------------------------------------
+    elif(opcion1 == 6):
+        Ficticios.datos_desde_txt("ficticios.txt",lista_clientes) #agrega clientes ficticios desde txt
+        print(msg.datosFicticios)
+    #---------------------------------------------------------------------------------------
     else:
         print(msg.err)
