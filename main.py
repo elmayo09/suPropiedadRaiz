@@ -53,9 +53,9 @@ while(True):
     #----------------------------------------------------------------------------
     elif(opcion1 == 2): #segunda opcion menu principal ingreso propietario
         print(msg.ingreso)
-        print(msg.in_cedula)
+        print(msg.cedula)
         ced = int(input())
-        print(msg.in_contrasena)
+        print(msg.contrasena)
         contra = str(input())
 
         logeado = Propietario.login(ced, contra, lista_propietarios)
@@ -72,51 +72,52 @@ while(True):
                     break
     
                 elif(opcion2 == 1): #Registrar inmueble
-                    print("Estrato:")
+                    print(msg.para_reg+msg.inmueble+"\n"+msg.ing)
+                    print(msg.estrato)
                     estrato = str(input())
-                    print("Direccion")
+                    print(msg.direccion)
                     direccion = str(input())
                     for inmueble in lista_inmuebles:  #busca la direccion entre los inmuebles existentes
                         if(inmueble.getDireccion() == direccion):
-                            print("El inmueble ya existe")
+                            print(msg.inmueble_existe)
                             direccion=0
                             break
                     if direccion!=0:
-                        print("Tiene vigilancia?(s|n):")
+                        print(msg.in_vigilancia)
                         vigilancia = str(input())
                         if vigilancia=="s":
                             vigilancia=True
                         else: vigilancia=False
-                        print("Tiene ascensor?(s|n):")
+                        print(msg.in_ascensor)
                         ascensor = str(input())
                         if ascensor=="s":
                             ascensor=True
                         else: ascensor=False
-                        print("Area en metros cuadrados:")
+                        print(msg.area)
                         area = int(input())
-                        print("Cantidad de cuartos:")
+                        print(msg.cuartos)
                         cuartos = int(input())
-                        print("Cantidad de baños:")
+                        print(msg.banos)
                         banos = int(input())
-                        print("para arriendo o compraventa:")
+                        print(msg.tipo)
                         tipo = str(input())
-                        print("Años de antiguedad del inmueble:")
+                        print(msg.antiguedad)
                         antiguedad = int(input())
-                        print("Ciudad donde esta ubicado de inmueble:")
+                        print(msg.ciudad)
                         ciudad = str(input())
                         inmu=Inmueble(estrato,direccion,vigilancia,ascensor,area,cuartos,banos,tipo,antiguedad,ciudad,logeado)#Creacion de inmueble
                         logeado.addInmueble(inmu)#enlace propietario con inmueble
                         if tipo=="arriendo":
                             #creacion arriendo
-                            print("Creacion de contrato de arriendo")
+                            print(msg.creando_contrato+msg.arriendo)
                             codigo_contrato+=1
-                            print("Fecha donde inicia arriendo(dd/mm/aaaa):")
+                            print(msg.fecha_inicio)
                             fechainicio = str(input())
-                            print("Fecha donde finaliza el arriendo(dd/mm/aaaa):")
+                            print(msg.fecha_fin)
                             fechafin = str(input())
-                            print("Valor de la mensulidad:")
+                            print(msg.valor_mensual)
                             valor = int(input())
-                            print("Estara por medio de Agencia?(s|n)")
+                            print(msg.in_agencia)
                             agencia = str(input())
                             if agencia=="s":
                                 agencia=True
@@ -127,19 +128,19 @@ while(True):
                             lista_arriendos.append(arrie)
                         else:
                             #Creacion compraventa
-                            print("Creacion de contrato de compra-venta")
+                            print(msg.creando_contrato+msg.compraventa)
                             codigo_contrato+=1
-                            print("Fecha (dd/mm/aaaa):")
+                            print(msg.fecha_actual)
                             fecha = str(input())
-                            print("Valor de la mensulidad:")
+                            print(msg.valor)
                             valor = int(input())
-                            print("Medio de pago:")
+                            print(msg.medio_pago)
                             medioPago = str(input())
                             compraV=Compraventa(codigo_contrato,fecha,valor,inmu,medioPago)#Creacion de contrato de compraventa enlazado a propietario e inmueble
                             inmu.setCompraventa(compraV)#enlace inmueble con la compraventa
                             lista_inmuebles.append(inmu)
                             lista_compraventas.append(compraV)
-                        print("inmueble registrado")
+                        print(msg.regd)
 
                 elif(opcion2 == 2):  #Ver los inmuebles del propietario actual
                     Inmueble.verListaInmuebles(logeado.getInmuebles())
@@ -159,7 +160,7 @@ while(True):
     #----------------------------------------------------------------------------           
     elif(opcion1 == 3): #opcion 3 menu principal registrtar cliente
         print(msg.registro)
-        print(msg.in_cedula)
+        print(msg.cedula)
         cedula_cliente = int(input())
         encontrado = False
         for client in lista_clientes:
@@ -168,11 +169,11 @@ while(True):
                 encontrado = True
                 break
         if(encontrado == False):  #No hay un cliente con esa cedula
-            print(msg.in_nombre)
+            print(msg.nombre)
             nombre_cliente = str(input())
-            print(msg.in_contrasena)
+            print(msg.contrasena)
             contrasena_cliente = str(input())
-            print(msg.in_direccion)
+            print(msg.direccion)
             direccion_cliente = str(input())
             
 
@@ -181,7 +182,7 @@ while(True):
                 opcion_correo = int(input())
 
                 if(opcion_correo == 1):  #Pide correo y registra cliente con correo
-                    print(msg.in_correo)
+                    print(msg.correo)
                     correo_cliente = str(input())
                     cliente_nuevo = Cliente(cedula_cliente, nombre_cliente, contrasena_cliente, direccion_cliente, correo_cliente)
                     lista_clientes.append(cliente_nuevo)
@@ -206,9 +207,9 @@ while(True):
     elif(opcion1 == 4):  #opciop 4 del menu principal Ingreso Como Cliente
         print(msg.ingreso)
 
-        print(msg.in_cedula)
+        print(msg.cedula)
         ced = int(input())
-        print(msg.in_contrasena)
+        print(msg.contrasena)
         contra = str(input())
 
         logeado = Cliente.login(ced, contra, lista_clientes)
@@ -234,14 +235,15 @@ while(True):
                     Compraventa.compraventasDisponibles(lista_compraventas)
 
                 elif(opciones_cliente == 3):  #Seleccionar compraventa
+                    print(msg.ing)
                     print(msg.sel_compraventa)
                     codigo_compraventa=int(input())
                     compraventa_actual=Compraventa.buscarCompraventa(lista_compraventas,codigo_compraventa)
                     if compraventa_actual==None or not compraventa_actual.getDisponible():
-                        print("Debe ingresar un codigo de compraventa valido")
+                        print(msg.codigo_valido)
                     else:
                         print(compraventa_actual.__str__())
-                        oferta=input("Desea aplicar a esta compraventa:(s|n)")
+                        oferta=input(msg.in_aplicar_compraventa)
                         if oferta=="s":
                             compraventa_actual.setDisponible(False)
                             compraventa_actual.setComprador(logeado)#enlace entre compraventa y el comprador
@@ -257,10 +259,10 @@ while(True):
                     arriendo_actual=Arriendo.buscarArriendo(lista_arriendos,codigo_arriendo)
                     
                     if arriendo_actual==None or not arriendo_actual.getDisponible():
-                        print("Debe ingresar un codigo de arriendo valido")
+                        print(msg.codigo_valido)
                     else:
                         print(arriendo_actual.__str__())
-                        oferta=input("Desea aplicar a este arriendo:(s|n)")
+                        oferta=input(msg.in_aplicar_arriendo)
                         if oferta=="s":
                             arriendo_actual.setDisponible(False)
                             arriendo_actual.setArrendatario(logeado)#enlace entre arriendo y el arrendatario
@@ -277,7 +279,7 @@ while(True):
             
     elif(opcion1 == 5): #Opcion 5 del menu principal registrar nuevo propietario
         print(msg.registro)
-        print(msg.in_cedula)
+        print(msg.cedula)
         cedula_propietario = int(input())
         encontrado = False
         for prop in lista_propietarios:
@@ -286,18 +288,18 @@ while(True):
                 encontrado = True
                 break
         if(encontrado == False):  #No hay un propietario con esa cedula
-            print(msg.in_nombre)
+            print(msg.nombre)
             nombre_propietario = str(input())
-            print(msg.in_contrasena)
+            print(msg.contrasena)
             contrasena_propietario = str(input())
-            print(msg.in_direccion)
+            print(msg.direccion)
             direccion_propietario = str(input())
             while(True):  #Correo opcional
                 print(msg.opcional_correo)
                 opcion_correo = int(input())
 
                 if(opcion_correo == 1):  #Pide correo y registra propietario con correo
-                    print(msg.in_correo)
+                    print(msg.correo)
                     correo_propietario = str(input())
                     break
 
