@@ -240,7 +240,7 @@ while(True):
                     codigo_compraventa=int(input())
                     compraventa_actual=Compraventa.buscarCompraventa(lista_compraventas,codigo_compraventa)
                     if compraventa_actual==None or not compraventa_actual.getDisponible():
-                        print(msg.codigo_valido)
+                        print(msg.codigo_invalido)
                     else:
                         print(compraventa_actual.__str__())
                         oferta=input(msg.in_aplicar_compraventa)
@@ -259,7 +259,7 @@ while(True):
                     arriendo_actual=Arriendo.buscarArriendo(lista_arriendos,codigo_arriendo)
                     
                     if arriendo_actual==None or not arriendo_actual.getDisponible():
-                        print(msg.codigo_valido)
+                        print(msg.codigo_invalido)
                     else:
                         print(arriendo_actual.__str__())
                         oferta=input(msg.in_aplicar_arriendo)
