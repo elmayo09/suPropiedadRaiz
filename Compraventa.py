@@ -19,7 +19,7 @@ class Compraventa(Contrato):
         self._medioPago=medioPago
 
     def __str__(self):
-        printer = "Compraventa: {"+"codigo: "+str(self._codigo)+", fecha: "+str(self._fecha)+", costo total: "+str(self._valor)+", inmueble: "+str(self._inmueble.__str__())+", propietario: "+str(self._propietario)+", comprador: "+str(self._comprador)+" }"
+        printer = "Compraventa: {"+"codigo: "+str(self._codigo)+", fecha: "+str(self._fecha)+", costo total: "+str(self._valor)+", inmueble: "+str(self._inmueble.__str__())+", comprador: "+str(self._comprador)+" }"
         return printer
     
     @staticmethod
