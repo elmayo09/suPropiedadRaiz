@@ -266,7 +266,7 @@ while(True):
                         if oferta=="s":
                             arriendo_actual.setDisponible(False)
                             arriendo_actual.setArrendatario(logeado)#enlace entre arriendo y el arrendatario
-                            logeado.addContrato(arriendo_actual)#se añade el contrato de arrendamieno a la lista de contratos del cliente
+                            logeado.addContrato(arriendo_actual)#se anade el contrato de arrendamieno a la lista de contratos del cliente
                             arriendo_actual.getInmueble().setTipo("arrendado")
                             print("Aplico")
                         else:
@@ -336,11 +336,11 @@ while(True):
                 area = int(input())
                 print("Cantidad de cuartos:")
                 cuartos = int(input())
-                print("Cantidad de baños:")
+                print("Cantidad de banos:")
                 banos = int(input())
                 print("para arriendo o compraventa:")
                 tipo = str(input())
-                print("Años de antiguedad del inmueble:")
+                print("Anios de antiguedad del inmueble:")
                 antiguedad = int(input())
                 print("Ciudad donde esta ubicado de inmueble:")
                 ciudad = str(input())
