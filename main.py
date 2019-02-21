@@ -89,12 +89,12 @@ while(True):
                     if direccion!=0:
                         print(msg.in_vigilancia)
                         vigilancia = str(input())
-                        if vigilancia=="s":
+                        if (vigilancia == "s" or vigilancia == "y"):
                             vigilancia=True
                         else: vigilancia=False
                         print(msg.in_ascensor)
                         ascensor = str(input())
-                        if ascensor=="s":
+                        if (ascensor == "s" or ascensor == "y"):
                             ascensor=True
                         else: ascensor=False
                         print(msg.area)
@@ -105,13 +105,17 @@ while(True):
                         banos = int(input())
                         print(msg.tipo)
                         tipo = str(input())
+                        if(tipo == "rent"):
+                            tipo = "arriendo"
+                        elif (tipo == "sale"):
+                            tipo = "compraventa"
                         print(msg.antiguedad)
                         antiguedad = int(input())
                         print(msg.ciudad)
                         ciudad = str(input())
                         inmu=Inmueble(estrato,direccion,vigilancia,ascensor,area,cuartos,banos,tipo,antiguedad,ciudad,logeado)#Creacion de inmueble
                         logeado.addInmueble(inmu)#enlace propietario con inmueble
-                        if tipo=="arriendo":
+                        if (tipo == "arriendo"):
                             #creacion arriendo
                             print(msg.creando_contrato+msg.arriendo)
                             codigo_contrato+=1
@@ -123,7 +127,7 @@ while(True):
                             valor = int(input())
                             print(msg.in_agencia)
                             agencia = str(input())
-                            if agencia=="s":
+                            if (agencia == "s" or agencia == "y"):
                                 agencia=True
                             else: agencia=False
                             arrie=Arriendo(codigo_contrato,fechainicio,fechafin,valor,inmu,agencia)#Creacion de contrato de arriendo enlazado a propietario e inmueble
@@ -149,11 +153,50 @@ while(True):
                 elif(opcion2 == 2):  #Ver los inmuebles del propietario actual
                     Inmueble.verListaInmuebles(logeado.getInmuebles())
 
-                elif(opcion2 == 6): #opcion 6 menu propietario Aprobar compraventas
-                    print("aprobar compraventas")
+                elif(opcion2 == 3): #opcion 3 menu propietario Aprobar compraventas
 
-                elif(opcion2 == 7): #opcion 7 menu propietario Aprobar arriendos
+                    print("aprobar compraventas")
+                    lista = logeado.getInmuebles()
+                    for inmueble in lista:
+                        if(inmueble.getTipo() == "solicitado_compraventa"):
+                            contrato_actual = inmueble.getCompraventa()
+                            print("Desea aceptar la compraventa:  " + contrato_actual.__str__() + "\n 1. Si \n 2. No")
+                            opcion = int(input())
+                            if(opcion == 1):
+                                inmueble.setTipo("Vendido")
+                                print("El inmueble se vendió")
+                            elif(opcion == 2):
+                                comprador = contrato_actual.getComprador()
+                                comprador.getContratos().remove(contrato_actual)
+                                contrato_actual.setComprador(None)
+                                inmueble.setTipo("compraventa")
+                                contrato_actual.setDisponible(True)
+                            else:
+                                print("No es opcion valida.")
+                    print("No tiene mas compraventas para aprobar.")               
+
+                elif(opcion2 == 4): #opcion 4 menu propietario Aprobar arriendos
                     print("aprobar arriendos")
+                    lista = logeado.getInmuebles()
+                    for inmueble in lista:
+                        if(inmueble.getTipo() == "solicitado_arriendo"):
+                            contrato = inmueble.getArriendo()
+                            arriendo_actual = contrato[-1]
+                            print("Desea aceptar el arriendo:  " + arriendo_actual.__str__() + "\n 1. Si \n 2. No")
+                            opcion = int(input())
+                            if(opcion == 1):
+                                inmueble.setTipo("Arrendado")
+                                print("El inmueble se arrendo")
+                            elif(opcion == 2):
+                                arrendatario = arriendo_actual.getArrendatario()
+                                arrendatario.getContratos().remove(arriendo_actual)
+                                arriendo_actual.setArrendatario(None)
+                                inmueble.setTipo("arriendo")
+                                arriendo_actual.setDisponible(True)
+                            else:
+                                print("No es opcion valida.")
+                    print("No tiene mas arriendos para aprobar.")               
+
             #Fin menu propietario----------------------------------------------------------------------------
 
                     
@@ -244,18 +287,18 @@ while(True):
                     codigo_compraventa=int(input())
                     compraventa_actual=Compraventa.buscarCompraventa(lista_compraventas,codigo_compraventa)
                     if compraventa_actual==None or not compraventa_actual.getDisponible():
-                        print(msg.codigo_valido)
+                        print(msg.codigo_invalido)
                     else:
                         print(compraventa_actual.__str__())
                         oferta=input(msg.in_aplicar_compraventa)
-                        if oferta=="s":
+                        if (oferta == "s" or oferta == "y"):
                             compraventa_actual.setDisponible(False)
                             compraventa_actual.setComprador(logeado)#enlace entre compraventa y el comprador
                             logeado.addContrato(compraventa_actual)
-                            compraventa_actual.getInmueble().setTipo("Vendido")
-                            print("aplico")
+                            compraventa_actual.getInmueble().setTipo("solicitado_compraventa")
+                            print(msg.apli_com)
                         else:
-                            print("No aplico a la compraventa de cogigo: "+str(compraventa_actual.getCodigo()))
+                            print(msg.no_apli_com+str(compraventa_actual.getCodigo()))
 
                 elif(opciones_cliente == 4): #Seleccionar arriendo
                     print(msg.sel_arriendo)
@@ -263,18 +306,18 @@ while(True):
                     arriendo_actual=Arriendo.buscarArriendo(lista_arriendos,codigo_arriendo)
                     
                     if arriendo_actual==None or not arriendo_actual.getDisponible():
-                        print(msg.codigo_valido)
+                        print(msg.codigo_invalido)
                     else:
                         print(arriendo_actual.__str__())
                         oferta=input(msg.in_aplicar_arriendo)
-                        if oferta=="s":
+                        if (oferta == "s" or oferta == "y"):
                             arriendo_actual.setDisponible(False)
                             arriendo_actual.setArrendatario(logeado)#enlace entre arriendo y el arrendatario
                             logeado.addContrato(arriendo_actual)#se anade el contrato de arrendamieno a la lista de contratos del cliente
-                            arriendo_actual.getInmueble().setTipo("arrendado")
-                            print("Aplico")
+                            arriendo_actual.getInmueble().setTipo("solicitado_arriendo")
+                            print(msg.apli_arr)
                         else:
-                            print("No aplico al arriendo de codigo "+str(arriendo_actual.getCodigo()))
+                            print(msg.no_apli_arr+str(arriendo_actual.getCodigo()))
 
                 elif(opciones_cliente == 5):#ver mis contratos actuales
                     print(Contrato.mostrarValoresContratos(logeado.getContratos()))
@@ -328,12 +371,12 @@ while(True):
                 lista_propietarios.append(logeado)
                 print("Tiene vigilancia?(s|n):")
                 vigilancia = str(input())
-                if vigilancia=="s":
+                if (vigilancia == "s" or vigilancia == "y"):
                     vigilancia=True
                 else: vigilancia=False
                 print("Tiene ascensor?(s|n):")
                 ascensor = str(input())
-                if ascensor=="s":
+                if (ascensor == "s" or ascensor == "y"):
                     ascensor=True
                 else: ascensor=False
                 print("Area en metros cuadrados:")
@@ -362,7 +405,7 @@ while(True):
                     valor = int(input())
                     print("Estara por medio de Agencia?(s|n)")
                     agencia = str(input())
-                    if agencia=="s":
+                    if (agencia == "s" or agencia == "y"):
                         agencia=True
                     else: agencia=False
                     arrie=Arriendo(codigo_contrato,fechainicio,fechafin,valor,inmu,logeado,agencia)#Creacion de contrato de arriendo enlazado a propietario e inmueble
