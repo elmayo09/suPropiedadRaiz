@@ -60,3 +60,7 @@ class Mensaje:
     agg = "Agregado correctamente.  \n"
     regd = "Registrado correctamente.  \n"
 
+    apli_com = "Aplico a la compraventa."
+    no_apli_com = "No aplico a la compraventa de codigo: "
+    no_apli_arr = "No aplico al arriendo de codigo: "
+    apli_arr = "Aplico al arriendo."

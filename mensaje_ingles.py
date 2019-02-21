@@ -60,3 +60,7 @@ class Mensaje:
     agg = "added succefully.  \n"
     regd = "registered succefully.  \n"
 
+    apli_com = "Applied to the sale successfully."
+    no_apli_com = "Failed to apply to the sale with code: "
+    no_apli_arr = "Failed to apply to the rent with code: "
+    apli_arr = "Applied to the rent successfully."
