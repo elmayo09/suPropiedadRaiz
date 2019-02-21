@@ -37,3 +37,22 @@ class Arriendo(Contrato):
             if arriendo.getCodigo()==codigo:
                 return arriendo
         return None
+
+    @staticmethod
+    def buscarArriendoPorEstrato(arriendos,estradoIni, estratoTop):
+        for arriendo in arriendos:
+            if estradoIni <= arriendo.getInmueble().getEstrato() <= estratoTop:
+                print(arriendo.__str__())
+       
+
+    @staticmethod
+    def buscarArriendoPorNumeroCuartos(arriendos,cuartosIni, cuartosTop):
+        for arriendo in arriendos:
+            if cuartosIni <= arriendo.getInmueble().getCuartos() <= cuartosTop:
+                print(arriendo.__str__())
+
+    @staticmethod
+    def buscarArriendoPorNumeroBanios(arriendos,baniosIni, baniosTop):
+        for arriendo in arriendos:
+            if baniosIni <= arriendo.getInmueble().getBanos() <= baniosTop:
+              print(arriendo.__str__())

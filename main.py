@@ -321,6 +321,32 @@ while(True):
 
                 elif(opciones_cliente == 5):#ver mis contratos actuales
                     print(Contrato.mostrarValoresContratos(logeado.getContratos()))
+
+                elif (opciones_cliente == 6):
+                    print(msg.estrato_ini)
+                    estratoIni=int(input())
+                    print(msg.estrato_top)
+                    estratoTop=int(input())
+                    Arriendo.buscarArriendoPorEstrato(lista_arriendos,estratoIni,estratoTop)
+                     
+                    
+                elif (opciones_cliente == 7):
+                    print(msg.cuartos_ini)
+                    cuartosIni=int(input())
+                    print(msg.cuartos_top)
+                    cuartosTop=int(input())
+                    Arriendo.buscarArriendoPorNumeroCuartos(lista_arriendos,cuartosIni,cuartosTop)
+                    
+                elif (opciones_cliente == 8):
+                    print(msg.banios_ini)
+                    baniosIni=int(input())
+                    print(msg.banios_top)
+                    baniosTop=int(input())
+                    Arriendo.buscarArriendoPorNumeroBanios(lista_arriendos,baniosIni,baniosTop)
+                    
+                
+                
+                
         else:
             print(msg.err_datos) #Datos erroneos cliente
             

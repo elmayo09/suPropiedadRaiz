@@ -6,7 +6,7 @@ class Mensaje:
     en_es = "1. English. \n2. Espaniol"
     err = "Opcion incorrecta, intente de nuevo"
 
-    menu_principal = "1. Agregar datos ficticios.\n2. Ingresar como propietario.\n3. Registrar cliente.\n4. Ingresar cliente.\n5. Registro nuevo propietario \n6. Agregar datos ficticios desde txt(Clientes)\n0. Salir.\n"
+    menu_principal = "1. Agregar datos ficticios.\n2. Ingresar como propietario.\n3. Registrar cliente.\n4. Ingresar como cliente.\n5. Registro nuevo propietario \n6. Agregar datos ficticios desde txt(Clientes)\n0. Salir.\n"
     ingreso = "Para entrar, ingrese los siguientes datos:\n"
     registro = "Para registrarse, ingrese los siguientes datos:\n"
     err_datos = "Datos incorrectos, intente de nuevo"
@@ -17,7 +17,12 @@ class Mensaje:
     seleccion = "----------------------------------------------------\n Ingrese el numero de una de las siguientes opciones: \n"
     menu_propietario = " 1. Registrar inmueble. \n 2. Ver lista de inmuebles. \n 3. Aprobar solicitudes de compraventa. \n 4. Aprobar solicitudes de arriendo. \n 0. Regresar al menu principal. \n " 
 
-    menu_cliente = " 1. Ver ofertas de arrendamiento. \n 2. Ver ofertas de compraventa.\n 3. Seleccionar compraventa \n 4. Seleccionar arriendo \n 5. Mostrar mis contratos \n 0. Regresar al menu principal"
+    menu_cliente = " 1. Ver ofertas de arrendamiento. \n 2. Ver ofertas de compraventa.\n "
+    menu_cliente +="3. Seleccionar compraventa \n 4. Seleccionar arriendo \n "
+    menu_cliente +="5. Mostrar mis contratos \n 6. ver ofertas de arrendamiento por estrato. \n "
+    menu_cliente +="7. Ver ofertas de arrendamiento por numero de cuartos. \n 8. ver ofertas de arrendamiento por numero de baños. \n"
+    menu_cliente +="0. Regresar al menu principal"
+
     arriendos_disp = "Los arrendamientos disponibles son: \n"
     compraventas_disp = "Las compraventas disponibles son: \n"
     sel_compraventa = "Ingrese el codigo de la compraventa: \n"
@@ -64,3 +69,10 @@ class Mensaje:
     no_apli_com = "No aplico a la compraventa de codigo: "
     no_apli_arr = "No aplico al arriendo de codigo: "
     apli_arr = "Aplico al arriendo."
+
+    cuartos_ini = "Ingrese el numero minimo de cuartos: "
+    cuartos_top = "Ingrese el numero máximo de cuartos"
+    estrato_ini = "Ingrese un estrato inicial: "
+    estrato_top = "Ingrese un estrato final: "
+    banios_ini = "Ingrese un numero de banios inicial: "
+    banios_top = "Ingrese un numero de banios final: "
