@@ -1,7 +1,7 @@
 
 class Inmueble:
     listaInmuebles = []
-    def __init__(self, estrato, direccion, vigilancia, ascensor, area, cuartos, banos, tipo,antiguedad,ciudad,propietario):
+    def __init__(self, estrato, direccion, vigilancia, ascensor, area, cuartos, banos, tipo,antiguedad,ciudad,propietario, disponible=True):
         self._estrato = estrato
         self._direccion = direccion
         self._vigilancia = vigilancia
@@ -14,7 +14,8 @@ class Inmueble:
         self._compraventa=None
         self._propietario=propietario
         self._ciudad=ciudad  
-        self._antiguedad=antiguedad   
+        self._antiguedad=antiguedad  
+        self._disponible=disponible 
 
     def __str__(self):
         printer = "Inmueble: {"+"estrato: "+str(self._estrato)+", direccion: "+str(self._direccion)+", vigilancia: "+str(self._vigilancia)+", ascensor: "+str(self._ascensor)+", area: "+str(self._area)+", banios: "+str(self._banos)+", cuartos: "+str(self._cuartos)+", tipo: "+str(self._tipo)+" }"
@@ -77,6 +78,12 @@ class Inmueble:
     def getArriendo(self):
         return self._arriendo
 
+    def getDisponible(self):
+        return self.disponible
+
+    def setDisponible(self, dispo):
+        self.disponible = dispo
+
     def addArriendo(self,contratoArriendo):
         if self._compraventa==None:
             self._arriendo.append(contratoArriendo)
@@ -114,3 +121,15 @@ class Inmueble:
     def verListaInmuebles(lista):
         for inmueble in lista:
             print(inmueble.__str__())
+
+    @staticmethod
+    def veriInmueblesDisponibles(lista):
+        for inmueble in lista:
+            if(inmueble.getDisponible()):
+                print(inmueble.__str__())
+
+    @staticmethod
+    def veriInmueblesDisponibles(lista):
+        for inmueble in lista:
+            if not(inmueble.getDisponible()):
+                print(inmueble.__str__())

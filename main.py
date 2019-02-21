@@ -46,6 +46,10 @@ while(True):
         print(msg.gracias) 
         break
     #----------------------------------------------------------------------------
+    elif (opcion1 == 7):
+        pass
+    
+    #----------------------------------------------------------------------------
     elif(opcion1 == 1):#primera opcion agregar datos ficticios
         #agregarDatosFicticios()
         Ficticios.agregarDatosFicticios(lista_clientes,lista_propietarios,lista_compraventas,lista_inmuebles,lista_arriendos)

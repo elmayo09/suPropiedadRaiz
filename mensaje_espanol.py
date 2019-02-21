@@ -1,7 +1,7 @@
 
 class Mensaje:
     title = "---------SuPropiedadRaiz-----------\n"
-    bienv = "*Welcome, select the language / Bienvenido, seleccione el idioma:*"
+    bienv = "*Welcome, please select a language / Bienvenido, por favor  seleccione un idioma:*"
     gracias = "Gracias por visitarnos."
     en_es = "1. English. \n2. Espaniol"
     err = "Opcion incorrecta, intente de nuevo"
