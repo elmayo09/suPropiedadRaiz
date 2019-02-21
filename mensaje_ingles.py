@@ -14,6 +14,7 @@ class Mensaje:
 
     bienv_usuario = "Welcome, "
     datosFicticios= "Fake data added succefully."
+<<<<<<< HEAD
     seleccion = "----------------------------------------------------\n Enter a number from one of the following options: \n"
     menu_propietario = " 1. Register a contract. \n 2. See list of properties. \n 0. Return to main menu. \n "
     menu_cliente = " 1. See rent offers. \n 2. See sale offers. \n 3. Select sale \n 4. Select rent \n 5. Show my contracts \n 0. Return to main menu"
