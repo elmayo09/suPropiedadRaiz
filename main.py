@@ -149,11 +149,50 @@ while(True):
                 elif(opcion2 == 2):  #Ver los inmuebles del propietario actual
                     Inmueble.verListaInmuebles(logeado.getInmuebles())
 
-                elif(opcion2 == 6): #opcion 6 menu propietario Aprobar compraventas
-                    print("aprobar compraventas")
+                elif(opcion2 == 3): #opcion 3 menu propietario Aprobar compraventas
 
-                elif(opcion2 == 7): #opcion 7 menu propietario Aprobar arriendos
+                    print("aprobar compraventas")
+                    lista = logeado.getInmuebles()
+                    for inmueble in lista:
+                        if(inmueble.getTipo() == "solicitado_compraventa"):
+                            contrato_actual = inmueble.getCompraventa()
+                            print("Desea aceptar la compraventa:  " + contrato_actual.__str__() + "\n 1. Si \n 2. No")
+                            opcion = int(input())
+                            if(opcion == 1):
+                                inmueble.setTipo("Vendido")
+                                print("El inmueble se vendió")
+                            elif(opcion == 2):
+                                comprador = contrato_actual.getComprador()
+                                comprador.getContratos().remove(contrato_actual)
+                                contrato_actual.setComprador(None)
+                                inmueble.setTipo("compraventa")
+                                contrato_actual.setDisponible(True)
+                            else:
+                                print("No es opcion valida.")
+                    print("No tiene mas compraventas para aprobar.")               
+
+                elif(opcion2 == 4): #opcion 4 menu propietario Aprobar arriendos
                     print("aprobar arriendos")
+                    lista = logeado.getInmuebles()
+                    for inmueble in lista:
+                        if(inmueble.getTipo() == "solicitado_arriendo"):
+                            contrato = inmueble.getArriendo()
+                            arriendo_actual = contrato[-1]
+                            print("Desea aceptar el arriendo:  " + arriendo_actual.__str__() + "\n 1. Si \n 2. No")
+                            opcion = int(input())
+                            if(opcion == 1):
+                                inmueble.setTipo("Arrendado")
+                                print("El inmueble se arrendo")
+                            elif(opcion == 2):
+                                arrendatario = arriendo_actual.getArrendatario()
+                                arrendatario.getContratos().remove(arriendo_actual)
+                                arriendo_actual.setArrendatario(None)
+                                inmueble.setTipo("arriendo")
+                                arriendo_actual.setDisponible(True)
+                            else:
+                                print("No es opcion valida.")
+                    print("No tiene mas arriendos para aprobar.")               
+
             #Fin menu propietario----------------------------------------------------------------------------
 
                     
@@ -252,7 +291,7 @@ while(True):
                             compraventa_actual.setDisponible(False)
                             compraventa_actual.setComprador(logeado)#enlace entre compraventa y el comprador
                             logeado.addContrato(compraventa_actual)
-                            compraventa_actual.getInmueble().setTipo("Vendido")
+                            compraventa_actual.getInmueble().setTipo("solicitado_compraventa")
                             print(msg.apli_com)
                         else:
                             print(msg.no_apli_com+str(compraventa_actual.getCodigo()))
@@ -271,7 +310,7 @@ while(True):
                             arriendo_actual.setDisponible(False)
                             arriendo_actual.setArrendatario(logeado)#enlace entre arriendo y el arrendatario
                             logeado.addContrato(arriendo_actual)#se anade el contrato de arrendamieno a la lista de contratos del cliente
-                            arriendo_actual.getInmueble().setTipo("arrendado")
+                            arriendo_actual.getInmueble().setTipo("solicitado_arriendo")
                             print(msg.apli_arr)
                         else:
                             print(msg.no_apli_arr+str(arriendo_actual.getCodigo()))
