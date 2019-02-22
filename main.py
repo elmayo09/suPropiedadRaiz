@@ -76,7 +76,7 @@ if __name__ == '__main__':
                     elif(opcion2 == 1): #Registrar inmueble
                         print(msg.para_reg+msg.inmueble+"\n"+msg.ing)
                         print(msg.estrato)
-                        estrato = str(input())
+                        estrato = int(input())
                         print(msg.direccion)
                         direccion = str(input())
                         for inmueble in lista_inmuebles:  #busca la direccion entre los inmuebles existentes
@@ -280,11 +280,13 @@ if __name__ == '__main__':
 
                     elif(opciones_cliente == 1):  #Mostrar arriendos disponibles
                         print(msg.arriendos_disp)
-                        Arriendo.arriendosDisponibles(lista_arriendos)
+                        disp=Arriendo.arriendosDisponibles(lista_arriendos)
+                        print(disp)
                     
                     elif(opciones_cliente == 2):  #Mostrar compraventas disponibles
                         print(msg.compraventas_disp)
-                        Compraventa.compraventasDisponibles(lista_compraventas)
+                        disp=Compraventa.compraventasDisponibles(lista_compraventas)
+                        print(disp)
 
                     elif(opciones_cliente == 3):  #Seleccionar compraventa
                         print(msg.ing)
