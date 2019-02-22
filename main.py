@@ -344,6 +344,7 @@ if __name__ == '__main__':
                         print(msg.cuartos_top)
                         cuartosTop=int(input())
                         disp=Arriendo.buscarArriendoPorNumeroCuartos(lista_arriendos,cuartosIni,cuartosTop)
+                        print(disp)
                         
                     elif (opciones_cliente == 8):#ver ofertas de arrendamiento por numero de banos. 
                         print(msg.banios_ini)
