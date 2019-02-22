@@ -20,7 +20,7 @@ class Mensaje:
     menu_cliente = " 1. See rent offers. \n 2. See sale offers. \n 3. Select sale \n 4. Select rent \n "
     menu_cliente += "5. Show my contracts \n 6. See rent offers by social stratum \n " 
     menu_cliente += "7. See rent offers by number of rooms  \n 8. See rent offers by number of bathrooms \n "
-    menu_cliente += "9. See rent offers by city. \n 10. See lowest-price rent offer. \n 11. See lowest-price sale offer. \n 0. Regresar al menu principal"
+    menu_cliente += "9. See rent offers by city. \n 10. See lowest-price rent offer. \n 11. See lowest-price sale offer. "
     menu_cliente += "\n 0. Return to main menu"
     
 
