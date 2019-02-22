@@ -101,19 +101,24 @@ if __name__ == '__main__':
                             cuartos = int(input())
                             print(msg.banos)
                             banos = int(input())
-                            print(msg.tipo)
-                            tipo = str(input())
-                            if(tipo == "rent"):
-                                tipo = "arriendo"
-                            elif (tipo == "sale"):
-                                tipo = "compraventa"
+                            while(True):  # Garantiza tipos establecidos
+                                print(msg.tipo)
+                                tipo = str(input())
+                                if(tipo == "1"):
+                                    tipo = "enArriendo"
+                                    break
+                                elif(tipo == "2"):
+                                    tipo = "enCompraventa"
+                                    break
+                                else:
+                                    print(msg.err)
                             print(msg.antiguedad)
                             antiguedad = int(input())
                             print(msg.ciudad)
                             ciudad = str(input())
                             inmu=Inmueble(estrato,direccion,vigilancia,ascensor,area,cuartos,banos,tipo,antiguedad,ciudad,logeado)#Creacion de inmueble
                             logeado.addInmueble(inmu)#enlace propietario con inmueble
-                            if (tipo == "arriendo"):
+                            if (tipo == "enArriendo"):
                                 #creacion arriendo
                                 print(msg.creando_contrato+msg.arriendo)
                                 codigo_contrato+=1
@@ -167,7 +172,7 @@ if __name__ == '__main__':
                                     comprador = contrato_actual.getComprador()
                                     comprador.getContratos().remove(contrato_actual)
                                     contrato_actual.setComprador(None)
-                                    inmueble.setTipo("compraventa")
+                                    inmueble.setTipo("enCompraventa")
                                     contrato_actual.setDisponible(True)
                                     print(msg.anulada_comp)
                                 else:
@@ -190,7 +195,7 @@ if __name__ == '__main__':
                                     arrendatario = arriendo_actual.getArrendatario()
                                     arrendatario.getContratos().remove(arriendo_actual)
                                     arriendo_actual.setArrendatario(None)
-                                    inmueble.setTipo("arriendo")
+                                    inmueble.setTipo("enArriendo")
                                     arriendo_actual.setDisponible(True)
                                     print(msg.anulada_arr)
                                 else:
@@ -422,19 +427,24 @@ if __name__ == '__main__':
                     cuartos = int(input())
                     print(msg.banos)
                     banos = int(input())
-                    print(msg.tipo)
-                    tipo = str(input())
-                    if(tipo == "rent"):
-                        tipo = "arriendo"
-                    elif(tipo == "sale"):
-                        tipo = "compraventa"
+                    while(True):  # Garantiza tipos establecidos
+                        print(msg.tipo)
+                        tipo = str(input())
+                        if(tipo == "1"):
+                            tipo = "enArriendo"
+                            break
+                        elif(tipo == "2"):
+                            tipo = "enCompraventa"
+                            break
+                        else:
+                            print(msg.err)
                     print(msg.antiguedad)
                     antiguedad = int(input())
                     print(msg.ciudad)
                     ciudad = str(input())
                     inmu=Inmueble(estrato,direccion,vigilancia,ascensor,area,cuartos,banos,tipo,antiguedad,ciudad,logeado)#Creacion de inmueble
                     logeado.addInmueble(inmu)#enlace propietario con inmueble
-                    if (tipo == "arriendo"):
+                    if (tipo == "enArriendo"):
                         #creacion arriendo
                         print(msg.creando_contrato+msg.arriendo)
                         codigo_contrato+=1

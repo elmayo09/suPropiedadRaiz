@@ -62,7 +62,7 @@ class Mensaje:
     fecha_fin = "* finish date (format dd/mm/yyyy): "
     fecha_actual = "* date (format dd/mm/yyyy)"
 
-    tipo = "Register for rent or sale?: "
+    tipo = "Register for: \n 1. Rent. \n 2. Sale.\n "
     agg = "added succefully.  \n"
     regd = "registered succefully.  \n"
 

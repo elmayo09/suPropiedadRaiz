@@ -20,8 +20,8 @@ class Mensaje:
     menu_cliente = " 1. Ver ofertas de arrendamiento. \n 2. Ver ofertas de compraventa.\n "
     menu_cliente +="3. Seleccionar compraventa \n 4. Seleccionar arriendo \n "
     menu_cliente +="5. Mostrar mis contratos \n 6. ver ofertas de arrendamiento por estrato. \n "
-    menu_cliente +="7. Ver ofertas de arrendamiento por numero de cuartos. \n 8. ver ofertas de arrendamiento por numero de baños. \n"
-    menu_cliente +="9. Ver arriendos por ciudad \n 10. Ver arriendo mas bajo \n 11. Ver Compraventa mas baja \n 0. Regresar al menu principal"
+    menu_cliente +="7. Ver ofertas de arrendamiento por numero de cuartos. \n 8. ver ofertas de arrendamiento por numero de baños. \n "
+    menu_cliente +="9. Ver arriendos por ciudad \n 10. Ver arriendo mas bajo \n 11. Ver Compraventa mas baja \n "
     menu_cliente +="0. Regresar al menu principal"
 
     arriendos_disp = "Los arrendamientos disponibles son: \n"
@@ -62,7 +62,7 @@ class Mensaje:
     fecha_fin = "* Fecha donde finaliza (formato dd/mm/aaaa): "
     fecha_actual = "* Fecha (formato dd/mm/aaaa)"
 
-    tipo = "Registrar para arriendo o compraventa?: "
+    tipo = "Registrar para: \n 1. Arriendo. \n 2. Compraventa.\n"
     agg = "Agregado correctamente.  \n"
     regd = "Registrado correctamente.  \n"
 
