@@ -153,47 +153,49 @@ if __name__ == '__main__':
 
                     elif(opcion2 == 3): #opcion 3 menu propietario Aprobar compraventas
 
-                        print("aprobar compraventas")
+                        print(msg.aprobar_comp)
                         lista = logeado.getInmuebles()
                         for inmueble in lista:
                             if(inmueble.getTipo() == "solicitado_compraventa"):
                                 contrato_actual = inmueble.getCompraventa()
-                                print("Desea aceptar la compraventa:  " + contrato_actual.__str__() + "\n 1. Si \n 2. No")
+                                print(msg.desea_comp + contrato_actual.__str__() + "\n 1. Si \n 2. No")
                                 opcion = int(input())
                                 if(opcion == 1):
                                     inmueble.setTipo("Vendido")
-                                    print("El inmueble se vendió")
+                                    print(msg.vendido)
                                 elif(opcion == 2):
                                     comprador = contrato_actual.getComprador()
                                     comprador.getContratos().remove(contrato_actual)
                                     contrato_actual.setComprador(None)
                                     inmueble.setTipo("compraventa")
                                     contrato_actual.setDisponible(True)
+                                    print(msg.anulada_comp)
                                 else:
-                                    print("No es opcion valida.")
-                        print("No tiene mas compraventas para aprobar.")               
+                                    print(msg.err)
+                        print(msg.no_mas_comp)               
 
                     elif(opcion2 == 4): #opcion 4 menu propietario Aprobar arriendos
-                        print("aprobar arriendos")
+                        print(msg.aprobar_arr)
                         lista = logeado.getInmuebles()
                         for inmueble in lista:
                             if(inmueble.getTipo() == "solicitado_arriendo"):
                                 contrato = inmueble.getArriendo()
                                 arriendo_actual = contrato[-1]
-                                print("Desea aceptar el arriendo:  " + arriendo_actual.__str__() + "\n 1. Si \n 2. No")
+                                print(msg.desea_arr + arriendo_actual.__str__() + "\n 1. Si \n 2. No")
                                 opcion = int(input())
                                 if(opcion == 1):
                                     inmueble.setTipo("Arrendado")
-                                    print("El inmueble se arrendo")
+                                    print(msg.arrendado)
                                 elif(opcion == 2):
                                     arrendatario = arriendo_actual.getArrendatario()
                                     arrendatario.getContratos().remove(arriendo_actual)
                                     arriendo_actual.setArrendatario(None)
                                     inmueble.setTipo("arriendo")
                                     arriendo_actual.setDisponible(True)
+                                    print(msg.anulada_arr)
                                 else:
-                                    print("No es opcion valida.")
-                        print("No tiene mas arriendos para aprobar.")               
+                                    print(msg.err)
+                        print(msg.no_mas_arr)               
 
                 #Fin menu propietario----------------------------------------------------------------------------
 
@@ -390,54 +392,59 @@ if __name__ == '__main__':
 
                     else: #No ingresa 1 o 2
                         print(msg.err)
-                print("Debe registrar un inmueble")
-                print("Estrato:")
+                print(msg.reg_inmueble)
+                print(msg.ing)
+                print(msg.estrato)
                 estrato = str(input())
-                print("Direccion")
+                print(msg.direccion)
                 direccion = str(input())
                 for inmueble in lista_inmuebles:  #busca la direccion entre los inmuebles existentes
                     if(inmueble.getDireccion() == direccion):
-                        print("El inmueble ya existe")
+                        print(msg.inmueble_existe)
                         direccion=0
                         break
                 if direccion!=0:
                     logeado=Propietario(cedula_propietario,nombre_propietario,contrasena_propietario,direccion,correo_propietario)
                     lista_propietarios.append(logeado)
-                    print("Tiene vigilancia?(s|n):")
+                    print(msg.in_vigilancia)
                     vigilancia = str(input())
                     if (vigilancia == "s" or vigilancia == "y"):
                         vigilancia=True
                     else: vigilancia=False
-                    print("Tiene ascensor?(s|n):")
+                    print(msg.in_ascensor)
                     ascensor = str(input())
                     if (ascensor == "s" or ascensor == "y"):
                         ascensor=True
                     else: ascensor=False
-                    print("Area en metros cuadrados:")
+                    print(msg.area)
                     area = int(input())
-                    print("Cantidad de cuartos:")
+                    print(msg.cuartos)
                     cuartos = int(input())
-                    print("Cantidad de banos:")
+                    print(msg.banos)
                     banos = int(input())
-                    print("para arriendo o compraventa:")
+                    print(msg.tipo)
                     tipo = str(input())
-                    print("Anios de antiguedad del inmueble:")
+                    if(tipo == "rent"):
+                        tipo = "arriendo"
+                    elif(tipo == "sale"):
+                        tipo = "compraventa"
+                    print(msg.antiguedad)
                     antiguedad = int(input())
-                    print("Ciudad donde esta ubicado de inmueble:")
+                    print(msg.ciudad)
                     ciudad = str(input())
                     inmu=Inmueble(estrato,direccion,vigilancia,ascensor,area,cuartos,banos,tipo,antiguedad,ciudad,logeado)#Creacion de inmueble
                     logeado.addInmueble(inmu)#enlace propietario con inmueble
-                    if tipo=="arriendo":
+                    if (tipo == "arriendo"):
                         #creacion arriendo
-                        print("Creacion de contrato de arriendo")
+                        print(msg.creando_contrato+msg.arriendo)
                         codigo_contrato+=1
-                        print("Fecha donde inicia arriendo(dd/mm/aaaa):")
+                        print(msg.fecha_inicio)
                         fechainicio = str(input())
-                        print("Fecha donde finaliza el arriendo(dd/mm/aaaa):")
+                        print(msg.fecha_fin)
                         fechafin = str(input())
-                        print("Valor de la mensulidad:")
+                        print(msg.valor_mensual)
                         valor = int(input())
-                        print("Estara por medio de Agencia?(s|n)")
+                        print(msg.in_agencia)
                         agencia = str(input())
                         if (agencia == "s" or agencia == "y"):
                             agencia=True
@@ -448,13 +455,13 @@ if __name__ == '__main__':
                         lista_arriendos.append(arrie)                    
                     else:
                         #Creacion compraventa
-                        print("Creacion de contrato de compra-venta")
+                        print(msg.creando_contrato+msg.compraventa)
                         codigo_contrato+=1
-                        print("Fecha (dd/mm/aaaa):")
+                        print(msg.fecha_actual)
                         fecha = str(input())
-                        print("Valor de la mensulidad:")
+                        print(msg.valor)
                         valor = int(input())
-                        print("Medio de pago:")
+                        print(msg.medio_pago)
                         medioPago = str(input())
                         compraV=Compraventa(codigo_contrato,logeado,fecha,valor,inmu,medioPago)#Creacion de contrato de compraventa enlazado a propietario e inmueble
                         inmu.setCompraventa(compraV)#enlace inmueble con la compraventa
