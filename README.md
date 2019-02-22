@@ -18,6 +18,6 @@ Al ejecutar, se despliegan menús con opciones numéricas.
 
 -Las primeras acciones luego de los datos ficticios, generalmente son registrarse como cliente (opcion 3) y/o registrarse como propietario (opcion 5).
 
--Para pruebas rapidas luego de agregar datos ficticios, se sugiere ingresar como un cliente por defecto (de cedula "99"  y contraseña "1234"), o ingresar como un funcionario por defecto (de cedula "1234" y contraseña "1234").
+-Para pruebas rapidas luego de agregar datos ficticios, se sugiere ingresar como un cliente por defecto (de cedula "99"  y contraseña "1234"), o ingresar como un propietario por defecto (de cedula "1234" y contraseña "1234").
 
 -El resto de instrucciones, se indican segun las opciones seleccionadas en el programa.
