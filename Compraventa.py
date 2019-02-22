@@ -24,16 +24,18 @@ class Compraventa(Contrato):
     
     @staticmethod
     def mostrarCompraventas(compraventas):
+        r=""
         for compraventa in compraventas:
-            print(compraventa.__str__())
-
+            r+=compraventa.__str__()+"\n"
+        return r
     #Metodo para buscar compraventas disponibles
     @staticmethod
     def compraventasDisponibles(compraventas):
+        r=""
         for compraventa in compraventas:
             if compraventa.getDisponible():
-                print(compraventa.__str__())
-
+                r+=compraventa.__str__()+"\n"
+        return r
     #Buscar compraventa por codigo
     @staticmethod
     def buscarCompraventa(compraventas, codigo):

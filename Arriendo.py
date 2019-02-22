@@ -20,15 +20,18 @@ class Arriendo(Contrato):
     
     @staticmethod
     def mostrarArriendos(arriendos):
+        r=""
         for arriendo in arriendos:
-            print(arriendo.__str__())
-
+            r+=arriendo.__str__()+"\n"
+        return r
     #Metodo para buscar arriendos disponibles
     @staticmethod
     def arriendosDisponibles(arriendos):
+        r=""
         for arriendo in arriendos:
             if arriendo.getDisponible():
-                print(arriendo.__str__())
+                r+=arriendo.__str__()+"\n"
+        return r
 
     #Buscar arriendos por codigo
     @staticmethod
@@ -40,19 +43,25 @@ class Arriendo(Contrato):
 
     @staticmethod
     def buscarArriendoPorEstrato(arriendos,estradoIni, estratoTop):
+        r=""
         for arriendo in arriendos:
             if estradoIni <= arriendo.getInmueble().getEstrato() <= estratoTop:
-                print(arriendo.__str__())
+                r+=arriendo.__str__()+"\n"
+        return r
        
 
     @staticmethod
     def buscarArriendoPorNumeroCuartos(arriendos,cuartosIni, cuartosTop):
+        r=""
         for arriendo in arriendos:
             if cuartosIni <= arriendo.getInmueble().getCuartos() <= cuartosTop:
-                print(arriendo.__str__())
+                r+=arriendo.__str__()+"\n"
+        return r
 
     @staticmethod
     def buscarArriendoPorNumeroBanios(arriendos,baniosIni, baniosTop):
+        r=""
         for arriendo in arriendos:
             if baniosIni <= arriendo.getInmueble().getBanos() <= baniosTop:
-              print(arriendo.__str__())
+              r+=arriendo.__str__()+"\n"
+        return r

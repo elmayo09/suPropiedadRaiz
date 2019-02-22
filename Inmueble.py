@@ -124,12 +124,8 @@ class Inmueble:
 
     @staticmethod
     def veriInmueblesDisponibles(lista):
+        r=""
         for inmueble in lista:
             if(inmueble.getDisponible()):
-                print(inmueble.__str__())
-
-    @staticmethod
-    def veriInmueblesDisponibles(lista):
-        for inmueble in lista:
-            if not(inmueble.getDisponible()):
-                print(inmueble.__str__())
+                r+=inmueble.__str__()+"\n"
+        return r

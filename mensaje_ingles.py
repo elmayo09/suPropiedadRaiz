@@ -14,13 +14,16 @@ class Mensaje:
 
     bienv_usuario = "Welcome, "
     datosFicticios= "Testing data added succefully."
+    seleccion = "----------------------------------------------------\n Enter a number from one of the following options: \n"
+    menu_propietario = " 1. Register a contract. \n 2. See list of properties. \n 3. Approve sale requests. \n 4. Approve rent requests. \n 0. Return to main menu. \n "
 
-    seleccion = "----------------------------------------------------\n Enter a number fro one of the following options: \n"
-    menu_propietario = " 1. Register a contract. \n 2. See list of properties. \n 0. Return to main menu. \n "
     menu_cliente = " 1. See rent offers. \n 2. See sale offers. \n 3. Select sale \n 4. Select rent \n "
     menu_cliente += "5. Show my contracts \n 6. See rent offers by social stratum \n " 
-    menu_cliente += "7. See rent offers by number of rooms  \n 8. See rent offers by number of bathrooms "
+    menu_cliente += "7. See rent offers by number of rooms  \n 8. See rent offers by number of bathrooms \n "
+    menu_cliente += "9. See rent offers by city. \n 10. See lowest-price rent offer. \n 11. See lowest-price sale offer. "
     menu_cliente += "\n 0. Return to main menu"
+    
+
     arriendos_disp = "The available rent offers are: \n"
     compraventas_disp = "The available sale offers are: \n"
     sel_compraventa = "Please enter the code of the sale: \n"
@@ -59,9 +62,11 @@ class Mensaje:
     fecha_fin = "* finish date (format dd/mm/yyyy): "
     fecha_actual = "* date (format dd/mm/yyyy)"
 
-    tipo = "Register for rent or sale?: "
+    tipo = "Register for: \n 1. Rent. \n 2. Sale.\n "
     agg = "added succefully.  \n"
     regd = "registered succefully.  \n"
+
+    reg_inmueble = "You need to register a new property.\n"
 
     apli_com = "Applied to the sale successfully."
     no_apli_com = "Failed to apply to the sale with code: "
@@ -74,3 +79,15 @@ class Mensaje:
     estrato_top = "Please enter the maximum social stratum: "
     banios_ini = "Please enter the minimum number of bathrooms: "
     banios_top  = "Please enter the maximum number of bathrooms: "
+
+
+    aprobar_comp = "***** Approve sale requests *****"
+    aprobar_arr = "***** Approve rent requests *****"
+    no_mas_comp = "No more sales to approve."
+    no_mas_arr = "No more rents to approve."
+    desea_comp = "Do you want to approve the sale: "
+    desea_arr = "Do you want to approve the rent: "
+    vendido = "The property was sold successfully."
+    arrendado = "The property was rented successfully."
+    anulada_comp = "The sale contract was canceled and published again successfully.\n"
+    anulada_arr = "The rent contract was canceled and published again successfully.\n"

@@ -43,26 +43,34 @@ class Contrato:
     @staticmethod
     def precioMasBajo(contratos):
         menor=contratos[0]
-        for Contrato in contratos:
-            if Contrato.getValor<menor.getValor:
-                menor=Contrato
+        for contrato in contratos:
+            if contrato.getValor() < menor.getValor():
+                menor=contrato
         return menor
 
     @staticmethod
     def precioMasAlto(contratos):
         mayor=contratos[0]
-        for Contrato in contratos:
-            if Contrato.getValor>mayor.getValor:
-                mayor=Contrato
+        for contrato in contratos:
+            if contrato.getValor()>mayor.getValor():
+                mayor=contrato
         return mayor
     
     @staticmethod
     def mostrarValoresContratos(contratos):
+        r= ""
         for contrato in contratos:
-            print(contrato.__str__())
+            r=r+contrato.__str__()+"\n"
+        return r
     
     @staticmethod
     def buscarPorCiudad(contratos, ciudad):
-    	for contrato in contratos:
-    		if (contrato.getInmueble().getCiudad() == ciudad):
-    			print(contrato.__str__())
+        r = ""
+        for contrato in contratos:
+            if (contrato.getInmueble().getCiudad() == ciudad):
+               r=r+contrato.__str__()+"\n"
+        if len(r)<0:
+            return "no"
+        else:
+            return r
+        
