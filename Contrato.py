@@ -58,8 +58,10 @@ class Contrato:
     
     @staticmethod
     def mostrarValoresContratos(contratos):
+        r= ""
         for contrato in contratos:
-            print(contrato.__str__())
+            r=r+contrato.__str__()+"\n"
+        return r
     
     @staticmethod
     def buscarPorCiudad(contratos, ciudad):
