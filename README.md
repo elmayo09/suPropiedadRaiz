@@ -1,2 +1,3 @@
 # suPropiedadRaiz Equipo 3
-Arhivo principal para la ejecucion del programa: main.py
+GitHub: https://github.com/elmayo09/suPropiedadRaiz.git
+Archivo principal para la ejecucion del programa: main.py
