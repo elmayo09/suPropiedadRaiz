@@ -334,7 +334,8 @@ if __name__ == '__main__':
                         estratoIni=int(input())
                         print(msg.estrato_top)
                         estratoTop=int(input())
-                        Arriendo.buscarArriendoPorEstrato(lista_arriendos,estratoIni,estratoTop)
+                        disp=Arriendo.buscarArriendoPorEstrato(lista_arriendos,estratoIni,estratoTop)
+                        print(disp)
                          
                         
                     elif (opciones_cliente == 7):#ver ofertas de arrendamiento por numero de cuartos
@@ -342,15 +343,16 @@ if __name__ == '__main__':
                         cuartosIni=int(input())
                         print(msg.cuartos_top)
                         cuartosTop=int(input())
-                        Arriendo.buscarArriendoPorNumeroCuartos(lista_arriendos,cuartosIni,cuartosTop)
+                        disp=Arriendo.buscarArriendoPorNumeroCuartos(lista_arriendos,cuartosIni,cuartosTop)
                         
                     elif (opciones_cliente == 8):#ver ofertas de arrendamiento por numero de banos. 
                         print(msg.banios_ini)
                         baniosIni=int(input())
                         print(msg.banios_top)
                         baniosTop=int(input())
-                        Arriendo.buscarArriendoPorNumeroBanios(lista_arriendos,baniosIni,baniosTop)
-                        
+                        disp=Arriendo.buscarArriendoPorNumeroBanios(lista_arriendos,baniosIni,baniosTop)
+                        print(disp)
+
                     elif (opciones_cliente == 9):#ver ofertas de arrendamiento por ciudad.
                         print(msg.ciudad)
                         ciudad = str(input())
